@@ -35,87 +35,91 @@
             user-select: none;
         }
 
-        /* --- Flipbook Wrapper --- */
-        .flipbook-wrapper {
+        /* --- Flipbook Container --- */
+        .flipbook {
+            position: relative;
+            width: 100%;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            width: 100%;
-            margin: 0 auto;
         }
 
-        /* --- Page Base --- */
-        .page {
-            background: linear-gradient(to right,
-                rgba(0,0,0,0.015) 0%,
-                transparent 3%,
-                transparent 97%,
-                rgba(0,0,0,0.02) 100%
-            ), #fefdfb;
-            padding: 2.2em 1.8em;
+        /* --- Cards --- */
+        .card {
+            position: absolute;
+            width: 92vw;
+            min-height: 78vh;
+            background: #fefdfb;
+            border-radius: 3px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08), 0 0 1px rgba(0,0,0,0.1);
+            padding: 2em 1.5em;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            overflow: hidden;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
         }
 
-        .page[data-density="hard"] {
-            background: linear-gradient(145deg, #f5f0e6 0%, #ece5d8 100%);
+        .card.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+            z-index: 2;
         }
 
-        /* --- Title Page --- */
-        .page-title {
+        .card.exit-left {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+
+        /* --- Card Types --- */
+
+        /* Title card */
+        .card-title {
             text-align: center;
             align-items: center;
         }
 
-        .page-title h1 {
-            font-size: clamp(1.7em, 5vw, 2.4em);
+        .card-title h1 {
+            font-size: 1.9em;
             font-weight: 400;
             letter-spacing: 0.04em;
             margin-bottom: 0.1em;
         }
 
-        .page-title .subtitle {
-            font-size: clamp(1.1em, 3vw, 1.3em);
+        .card-title .subtitle {
+            font-size: 1.3em;
             font-style: italic;
             color: #8b7355;
             margin-bottom: 0.3em;
         }
 
-        .page-title .volume {
+        .card-title .volume {
             font-size: 0.8em;
             letter-spacing: 0.35em;
             color: #aaa;
             margin-bottom: 2.5em;
         }
 
-        .page-title .author {
+        .card-title .author {
             font-size: 1em;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: #555;
         }
 
-        .page-title .pull-line {
-            font-style: italic;
-            color: #555;
-            font-size: 0.92em;
-            max-width: 85%;
-            margin-top: 2.5em;
-            line-height: 1.65;
-        }
-
-        /* --- Teaser Page --- */
-        .page-teaser h2 {
-            font-size: clamp(1.2em, 3.5vw, 1.45em);
+        /* Teaser card */
+        .card-teaser h2 {
+            font-size: 1.45em;
             font-weight: 400;
             text-align: center;
             margin-bottom: 0.2em;
         }
 
-        .page-teaser .tagline {
+        .card-teaser .tagline {
             font-style: italic;
             font-size: 0.92em;
             color: #888;
@@ -123,32 +127,32 @@
             margin-bottom: 1.8em;
         }
 
-        .page-teaser .excerpt {
-            font-size: clamp(0.92em, 2.5vw, 1.05em);
+        .card-teaser .excerpt {
+            font-size: 1.05em;
             line-height: 1.78;
             color: #2d2d2d;
             text-align: justify;
             hyphens: auto;
         }
 
-        .page-teaser .excerpt p {
+        .card-teaser .excerpt p {
             margin-bottom: 0.9em;
         }
 
-        .page-teaser .fade-bottom {
+        .card-teaser .fade-bottom {
             height: 3em;
             background: linear-gradient(transparent, #fefdfb);
             margin-top: -3em;
             position: relative;
         }
 
-        /* --- Part Opener Page --- */
-        .page-part {
+        /* Part opener card */
+        .card-part {
             text-align: center;
             align-items: center;
         }
 
-        .page-part .part-number {
+        .card-part .part-number {
             font-size: 0.8em;
             letter-spacing: 0.25em;
             text-transform: uppercase;
@@ -156,26 +160,26 @@
             margin-bottom: 0.5em;
         }
 
-        .page-part h2 {
-            font-size: clamp(1.8em, 5vw, 2.2em);
+        .card-part h2 {
+            font-size: 2.2em;
             font-weight: 400;
             letter-spacing: 0.05em;
             margin-bottom: 0.15em;
         }
 
-        .page-part .part-subtitle {
+        .card-part .part-subtitle {
             font-size: 1.15em;
             font-style: italic;
             margin-bottom: 1.5em;
         }
 
-        .page-part .ornament-line {
+        .card-part .ornament-line {
             width: 25%;
             height: 1px;
             margin-bottom: 1.5em;
         }
 
-        .page-part .part-epigraph {
+        .card-part .part-epigraph {
             font-style: italic;
             font-size: 1em;
             color: #4a4a4a;
@@ -183,7 +187,7 @@
             line-height: 1.65;
         }
 
-        .page-part .transition {
+        .card-part .transition {
             font-size: 0.92em;
             color: #666;
             max-width: 85%;
@@ -191,13 +195,13 @@
             line-height: 1.6;
         }
 
-        /* --- Moment Page --- */
-        .page-moment {
+        /* Through-line card */
+        .card-moment {
             text-align: center;
             align-items: center;
         }
 
-        .page-moment .moment-label {
+        .card-moment .moment-label {
             font-variant: small-caps;
             letter-spacing: 0.12em;
             color: #8b7355;
@@ -205,7 +209,7 @@
             margin-bottom: 1.5em;
         }
 
-        .page-moment p {
+        .card-moment p {
             font-style: italic;
             font-size: 1.08em;
             color: #3d3d3d;
@@ -214,20 +218,20 @@
             line-height: 1.75;
         }
 
-        /* --- Download Page --- */
-        .page-download {
+        /* Download card */
+        .card-download {
             text-align: center;
             align-items: center;
         }
 
-        .page-download .ornament {
+        .card-download .ornament {
             font-size: 0.55em;
             color: #8b7355;
             letter-spacing: 0.5em;
             margin-bottom: 2em;
         }
 
-        .page-download .cta-text {
+        .card-download .cta-text {
             font-style: italic;
             color: #555;
             font-size: 1.05em;
@@ -252,13 +256,13 @@
 
         .btn-download:hover { background: #333; }
 
-        .page-download .fine-print {
+        .card-download .fine-print {
             margin-top: 1.5em;
             font-size: 0.85em;
             color: #aaa;
         }
 
-        /* --- Season Colors --- */
+        /* Season colors */
         .spring h2 { color: #6b7f5e; }
         .spring .part-subtitle { color: #6b7f5e; }
         .spring .ornament-line { background: #6b7f5e; }
@@ -297,7 +301,7 @@
             display: flex;
             align-items: center;
             gap: 1.5em;
-            z-index: 100;
+            z-index: 10;
         }
 
         .nav button {
@@ -355,7 +359,7 @@
             border-radius: 2px;
             cursor: pointer;
             transition: all 0.2s;
-            z-index: 100;
+            z-index: 10;
             letter-spacing: 0.05em;
         }
 
@@ -363,17 +367,6 @@
             background: #8b7355;
             color: #fefdfb;
             border-color: #8b7355;
-        }
-
-        /* --- Progress Bar --- */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 2px;
-            background: #8b7355;
-            transition: width 0.4s ease;
-            z-index: 200;
         }
 
         /* --- Footer --- */
@@ -384,12 +377,34 @@
             transform: translateX(-50%);
             font-size: 0.72em;
             color: #bbb;
-            z-index: 100;
+            z-index: 5;
         }
 
         .page-footer a { color: #8b7355; text-decoration: none; }
 
-        /* --- Key Hint --- */
+        /* --- Desktop scale-up --- */
+        @media (min-width: 600px) {
+            .card {
+                width: 520px;
+                min-height: 680px;
+                padding: 3em 2.5em;
+            }
+            .card-title h1 { font-size: 2.4em; }
+            .card-part h2 { font-size: 2.2em; }
+        }
+
+        /* --- Progress Bar --- */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: #8b7355;
+            transition: width 0.4s ease;
+            z-index: 20;
+        }
+
+        /* --- Keyboard hint --- */
         .key-hint {
             position: fixed;
             bottom: 5em;
@@ -397,353 +412,301 @@
             transform: translateX(-50%);
             font-size: 0.75em;
             color: #ccc;
-            z-index: 100;
+            z-index: 5;
             transition: opacity 1s;
-            white-space: nowrap;
-        }
-
-        /* --- StPageFlip overrides --- */
-        .stf__wrapper {
-            box-shadow: 0 4px 30px rgba(0,0,0,0.12), 0 0 2px rgba(0,0,0,0.08);
-            border-radius: 3px;
         }
     </style>
 </head>
 <body>
 
 <div class="progress-bar" id="progressBar" style="width:0%"></div>
-<button class="share-btn" onclick="shareCard()">Share this page</button>
+<button class="share-btn" onclick="shareCard()">Share this card</button>
 
-<div class="flipbook-wrapper">
-    <div id="book">
+<div class="flipbook" id="flipbook">
 
-        <!-- 0: Title (Front Cover) -->
-        <div class="page page-title" data-density="hard">
-            <h1>The Calibrated View</h1>
-            <div class="subtitle">Master Yourself</div>
-            <div class="volume">&mdash; Volume I &mdash;</div>
-            <div class="author">Marcus Corvin</div>
-            <p class="pull-line">You are running on a picture that expired years ago and never got updated.</p>
-        </div>
-
-        <!-- 1: Epigraph -->
-        <div class="page page-moment">
-            <p>&ldquo;The happiness of your life depends upon<br>the quality of your thoughts.&rdquo;</p>
-            <p style="font-style:normal; font-size:0.88em; color:#8b7355;">&mdash; Marcus Aurelius, <em>Meditations</em></p>
-        </div>
-
-        <!-- 2: Hook -->
-        <div class="page page-teaser">
-            <h2>Before You Begin</h2>
-            <div class="tagline" style="color:#8b7355;"></div>
-            <div class="excerpt">
-                <p>You are holding a book about seeing.</p>
-                <p>Not seeing in the mystical sense &mdash; no third eye, no enlightenment, no cosmic truth revealed in a flash. Seeing in the ordinary sense. The sense that determines whether you understand what is actually happening in your relationships, your work, your community, and your own mind &mdash; or whether you are running on a picture that expired years ago and never got updated.</p>
-                <p>None of this is abstract. It operates in your next conversation. Your next decision. Your next conflict. Your next quiet moment alone.</p>
-            </div>
-        </div>
-
-        <!-- 3: Through-line -->
-        <div class="page page-moment">
-            <div class="moment-label">A moment we will return to</div>
-            <p>You are sitting across from someone you love. Something has shifted between you, and neither of you has named it yet.</p>
-            <p>Maybe it is a silence that used to be comfortable. Maybe it is a sentence that landed wrong three days ago and has been growing in the dark.</p>
-            <p>Hold that moment. Each season will give you different eyes for the same scene.</p>
-        </div>
-
-        <!-- 4: Story — Konya -->
-        <div class="page page-teaser">
-            <h2 style="color:#8b7355;">Konya, 1244</h2>
-            <div class="tagline" style="color:#8b7355;">From the opening of Summer</div>
-            <div class="excerpt">
-                <p>A scholar walks through the marketplace carrying an armload of books. He is Jalaluddin Rumi &mdash; renowned jurist, theologian, professor &mdash; a man whose entire identity rests on what he knows and how impressively he can display it.</p>
-                <p>Then a wandering dervish steps into his path. Shams of Tabriz &mdash; ragged, unimpressive, owning nothing. He gestures at the armload of books and asks: <em>&ldquo;What is the use of all this if it has not become living experience?&rdquo;</em></p>
-                <p>Rumi&rsquo;s books fall from his hands. A man who had spent his entire life constructing an identity through knowledge met someone who saw straight through the construction to the person underneath.</p>
-            </div>
-            <div class="fade-bottom"></div>
-        </div>
-
-        <!-- 5: Spring Part -->
-        <div class="page page-part spring">
-            <div class="part-number">Part I</div>
-            <h2>Spring</h2>
-            <div class="part-subtitle">The 9 Lenses</div>
-            <div class="ornament-line"></div>
-            <div class="part-epigraph"><em>What you see was chosen for you. Until now.</em></div>
-        </div>
-
-        <!-- 6: Spring Teaser -->
-        <div class="page page-teaser spring">
-            <h2>The Family Lens</h2>
-            <div class="tagline">What was installed before you could refuse it</div>
-            <div class="excerpt">
-                <p>You did not choose your first way of seeing. It was handed to you in a specific room, by specific people, through the daily texture of how they loved you and how they failed to. Before you could speak, you were learning what closeness means, what conflict looks like, whether the world responds when you reach for it.</p>
-                <p>Those patterns are not memories. They are architecture.</p>
-            </div>
-            <div class="fade-bottom"></div>
-        </div>
-
-        <!-- 7: Summer Part -->
-        <div class="page page-part summer">
-            <div class="part-number">Part II</div>
-            <h2>Summer</h2>
-            <div class="part-subtitle">The 9 Encounters</div>
-            <div class="ornament-line"></div>
-            <div class="part-epigraph"><em>What is the world showing you, now that you can see?</em></div>
-            <div class="transition">You now carry nine lenses. You can name them. That alone changes how you walk through the world. But lenses cleaned in solitude have not been tested against other people.</div>
-        </div>
-
-        <!-- 8: Summer Teaser -->
-        <div class="page page-teaser summer">
-            <h2>The Projection Lens</h2>
-            <div class="tagline">The story you write on someone else&rsquo;s face</div>
-            <div class="excerpt">
-                <p>What if the version of someone you carry in your head &mdash; the one you argue with at 3am, the one you brace for before a phone call &mdash; says more about you than about them?</p>
-                <p>Every face you read is filtered through your own history. Your attachment style, your expectations, the last three conversations you had before walking into the room. Not a flaw. The default. The question this chapter asks is whether you can catch yourself writing the story &mdash; before you finish it.</p>
-            </div>
-            <div class="fade-bottom"></div>
-        </div>
-
-        <!-- 9: Fall Part -->
-        <div class="page page-part fall">
-            <div class="part-number">Part III</div>
-            <h2>Fall</h2>
-            <div class="part-subtitle">The 9 Patterns</div>
-            <div class="ornament-line"></div>
-            <div class="part-epigraph"><em>What do we owe each other, now that we can see?</em></div>
-            <div class="transition">Neither self-examination nor encounter can reveal the patterns running through every group you belong to.</div>
-        </div>
-
-        <!-- 10: Fall Teaser -->
-        <div class="page page-teaser fall">
-            <h2>The Herd Lens</h2>
-            <div class="tagline">What you can only see from outside the circle</div>
-            <div class="excerpt">
-                <p>Every group you belong to runs patterns you haven&rsquo;t chosen. Unspoken rules about what can be said. Invisible agreements about what gets rewarded. A belonging price no one posted on the door.</p>
-                <p>In 1951, Solomon Asch discovered something fascinating: people would agree with an obviously wrong answer if enough others said it first. Not because they were foolish. Because the pull of the group operates beneath individual decision. This chapter asks what it would mean to see those patterns clearly &mdash; not to leave, but to choose which ones you feed.</p>
-            </div>
-            <div class="fade-bottom"></div>
-        </div>
-
-        <!-- 11: Story — Milgram -->
-        <div class="page page-teaser fall">
-            <h2>New Haven, 1961</h2>
-            <div class="tagline">From the opening of Fall</div>
-            <div class="excerpt">
-                <p>A man walks into a laboratory at Yale. He has answered a newspaper ad offering four dollars for an hour of his time. He is not a scientist. He is a teacher, a postal worker, a salesman.</p>
-                <p>What happens next became one of the most important experiments in the history of psychology. Not because of what it revealed about cruelty &mdash; but about the invisible patterns that guide ordinary people through situations they never imagined they would face.</p>
-                <p>The question it raises is not <em>would you?</em> The question is: <em>what pattern would you have to see clearly to choose differently?</em></p>
-            </div>
-            <div class="fade-bottom"></div>
-        </div>
-
-        <!-- 12: Winter Part -->
-        <div class="page page-part winter">
-            <div class="part-number">Part IV</div>
-            <h2>Winter</h2>
-            <div class="part-subtitle">The 9 Forces</div>
-            <div class="ornament-line"></div>
-            <div class="part-epigraph"><em>What forces shaped you before you were born?</em></div>
-            <div class="transition">You have seen yourself. You have seen others. You have seen your community and what it runs in the dark. One more scale &mdash; the largest.</div>
-        </div>
-
-        <!-- 13: Winter Teaser -->
-        <div class="page page-teaser winter">
-            <h2>The System Lens</h2>
-            <div class="tagline">You are always inside a system</div>
-            <div class="excerpt">
-                <p>Before breakfast, you moved through a dozen systems. You designed none of them. The alarm that woke you runs on an economy that decided your labor is worth a specific number. The news you checked was filtered by an algorithm optimized for your attention, not your clarity. The coffee you drank traveled through a supply chain you will never see, priced by forces you will never meet.</p>
-                <p>None of them asked your permission. Most of them were running before you were born.</p>
-            </div>
-            <div class="fade-bottom"></div>
-        </div>
-
-        <!-- 14: Special Chapter -->
-        <div class="page page-part special">
-            <h2>The Living Portrait</h2>
-            <div class="part-subtitle">Why We Survive Together</div>
-            <div class="ornament-line"></div>
-            <div class="part-epigraph"><em>You are holding a picture of someone. They are not in it anymore.</em></div>
-            <div class="transition">A chapter that asks the question all four seasons have been circling: can you bring the full weight of your seeing to the person standing in front of you?</div>
-        </div>
-
-        <!-- 15: The Snapshot -->
-        <div class="page page-teaser special">
-            <h2 style="color:#8b7355;">The Snapshot</h2>
-            <div class="tagline" style="color:#8b7355;">From The Living Portrait</div>
-            <div class="excerpt">
-                <p>There is a photograph you carry of every person you love. Not in your phone. In your nervous system.</p>
-                <p>The person in front of you has been becoming while you weren&rsquo;t watching. Shaped by experiences you didn&rsquo;t share, conversations you weren&rsquo;t part of, growth you didn&rsquo;t notice because it happened in the ordinary accumulation of days. They are not who they were. And neither are you.</p>
-                <p>What would happen if you let the picture update? What would you see that the old portrait has been hiding? This chapter explores what becomes possible when you stop holding people to the version you remember &mdash; and start meeting the person who is actually there.</p>
-            </div>
-            <div class="fade-bottom"></div>
-        </div>
-
-        <!-- 16: The Taj Mahal -->
-        <div class="page page-teaser special">
-            <h2 style="color:#8b7355;">The Taj Mahal</h2>
-            <div class="tagline" style="color:#8b7355;">From The Living Portrait</div>
-            <div class="excerpt">
-                <p>In 1631, Shah Jahan began building the most beautiful snapshot ever constructed. The Taj Mahal. A monument to a woman who was no longer becoming.</p>
-                <p>The living Mumtaz was not just a beloved wife. She was a trusted political advisor. She accompanied Shah Jahan on military campaigns. She mediated disputes, managed court alliances, bore fourteen children, and wielded influence that shaped the Mughal empire. She was complex, evolving, becoming &mdash; right up to the moment she was not.</p>
-                <p>We all build our Taj Mahals. Smaller, invisible, but just as fixed. This chapter is about learning to build something else instead.</p>
-            </div>
-            <div class="fade-bottom"></div>
-        </div>
-
-        <!-- 17: About the Author -->
-        <div class="page page-teaser">
-            <h2 style="color:#8b7355;">The Author</h2>
-            <div class="tagline" style="color:#8b7355;">Marcus Corvin is a pen name. The person behind it does not think that matters much.</div>
-            <div class="excerpt">
-                <p>He has spent years in rooms where unclear seeing costs something real. Not classrooms. Not seminars. Rooms where the feedback is immediate and the window between seeing and acting does not wait for your theory to catch up. He learned to see clearly because the alternative was expensive.</p>
-                <p>Then he noticed the same filters operating everywhere &mdash; in relationships, in communities, in systems &mdash; and he couldn&rsquo;t unsee it. The framework underneath this book was born from that. Built by someone who needed tools that worked when he was tired, cornered, wrong, or in love.</p>
-                <p>The entire point &mdash; the only point &mdash; is that after reading this, you need it less. If that sounds like a strange business model, you are beginning to understand the author.</p>
-            </div>
-        </div>
-
-        <!-- 18: Download (Back Cover) -->
-        <div class="page page-download" data-density="hard">
-            <div class="ornament">&#x25C6;</div>
-            <div class="cta-text">36 chapters. 4 seasons. 1 framework for seeing clearly.</div>
-            <a href="the-calibrated-view-vol1.pdf" class="btn-download">Download the Book (PDF)</a>
-            <div class="fine-print">Free. No sign-up. No email list. Just the book.</div>
-        </div>
-
+    <!-- 0: Title -->
+    <div class="card card-title active" data-share="You are running on a picture that expired years ago and never got updated. The Calibrated View: Master Yourself — Volume I.">
+        <h1>The Calibrated View</h1>
+        <div class="subtitle">Master Yourself</div>
+        <div class="volume">— Volume I —</div>
+        <div class="author">Marcus Corvin</div>
+        <p style="font-style:italic; color:#555; font-size:0.92em; max-width:85%; margin-top:2.5em; line-height:1.65;">You are running on a picture that expired years ago and never got updated.</p>
     </div>
+
+    <!-- 1: Epigraph -->
+    <div class="card card-moment" data-share="&ldquo;The happiness of your life depends upon the quality of your thoughts.&rdquo; — Marcus Aurelius">
+        <p>&ldquo;The happiness of your life depends upon<br>the quality of your thoughts.&rdquo;</p>
+        <p style="font-style:normal; font-size:0.88em; color:#8b7355;">&mdash; Marcus Aurelius, <em>Meditations</em></p>
+    </div>
+
+    <!-- 2: Hook -->
+    <div class="card card-teaser" data-share="You are holding a book about seeing. Not the mystical kind. The ordinary kind — the kind that determines whether you understand what is actually happening.">
+        <h2>Before You Begin</h2>
+        <div class="tagline" style="color:#8b7355;"></div>
+        <div class="excerpt">
+            <p>You are holding a book about seeing.</p>
+            <p>Not seeing in the mystical sense &mdash; no third eye, no enlightenment, no cosmic truth revealed in a flash. Seeing in the ordinary sense. The sense that determines whether you understand what is actually happening in your relationships, your work, your community, and your own mind &mdash; or whether you are running on a picture that expired years ago and never got updated.</p>
+            <p>None of this is abstract. It operates in your next conversation. Your next decision. Your next conflict. Your next quiet moment alone.</p>
+        </div>
+    </div>
+
+    <!-- 3: Through-line -->
+    <div class="card card-moment" data-share="You are sitting across from someone you love. Something has shifted between you, and neither of you has named it yet.">
+        <div class="moment-label">A moment we will return to</div>
+        <p>You are sitting across from someone you love. Something has shifted between you, and neither of you has named it yet.</p>
+        <p>Maybe it is a silence that used to be comfortable. Maybe it is a sentence that landed wrong three days ago and has been growing in the dark.</p>
+        <p>Hold that moment. Each season will give you different eyes for the same scene.</p>
+    </div>
+
+    <!-- 4: Story — Konya -->
+    <div class="card card-teaser" data-share="Konya, 1244. Rumi's books fell from his hands. A man who had spent his entire life constructing an identity through knowledge met someone who saw straight through the construction.">
+        <h2 style="color:#8b7355;">Konya, 1244</h2>
+        <div class="tagline" style="color:#8b7355;">From the opening of Summer</div>
+        <div class="excerpt">
+            <p>A scholar walks through the marketplace carrying an armload of books. He is Jalaluddin Rumi &mdash; renowned jurist, theologian, professor &mdash; a man whose entire identity rests on what he knows and how impressively he can display it.</p>
+            <p>Then a wandering dervish steps into his path. Shams of Tabriz &mdash; ragged, unimpressive, owning nothing. He gestures at the armload of books and asks: <em>&ldquo;What is the use of all this if it has not become living experience?&rdquo;</em></p>
+            <p>Rumi&rsquo;s books fall from his hands. A man who had spent his entire life constructing an identity through knowledge met someone who saw straight through the construction to the person underneath.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 5: Spring Part -->
+    <div class="card card-part spring" data-share="Part I — Spring: The 9 Lenses. What you see was chosen for you. Until now.">
+        <div class="part-number">Part I</div>
+        <h2>Spring</h2>
+        <div class="part-subtitle">The 9 Lenses</div>
+        <div class="ornament-line"></div>
+        <div class="part-epigraph"><em>What you see was chosen for you. Until now.</em></div>
+    </div>
+
+    <!-- 5: Spring Teaser -->
+    <div class="card card-teaser spring" data-share="The Family Lens: You did not choose your first way of seeing. It was handed to you in a specific room, by specific people.">
+        <h2>The Family Lens</h2>
+        <div class="tagline">What was installed before you could refuse it</div>
+        <div class="excerpt">
+            <p>You did not choose your first way of seeing. It was handed to you in a specific room, by specific people, through the daily texture of how they loved you and how they failed to. Before you could speak, you were learning what closeness means, what conflict looks like, whether the world responds when you reach for it.</p>
+            <p>Those patterns are not memories. They are architecture.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 6: Summer Part -->
+    <div class="card card-part summer" data-share="Part II — Summer: The 9 Encounters. Lenses cleaned in solitude have not been tested against other people.">
+        <div class="part-number">Part II</div>
+        <h2>Summer</h2>
+        <div class="part-subtitle">The 9 Encounters</div>
+        <div class="ornament-line"></div>
+        <div class="part-epigraph"><em>What is the world showing you, now that you can see?</em></div>
+        <div class="transition">You now carry nine lenses. You can name them. That alone changes how you walk through the world. But lenses cleaned in solitude have not been tested against other people.</div>
+    </div>
+
+    <!-- 7: Summer Teaser -->
+    <div class="card card-teaser summer" data-share="The Projection Lens: What if the version of someone you carry in your head says more about you than about them? What would change if you could catch yourself writing the story — before you finish it?">
+        <h2>The Projection Lens</h2>
+        <div class="tagline">The story you write on someone else&rsquo;s face</div>
+        <div class="excerpt">
+            <p>What if the version of someone you carry in your head &mdash; the one you argue with at 3am, the one you brace for before a phone call &mdash; says more about you than about them?</p>
+            <p>Every face you read is filtered through your own history. Your attachment style, your expectations, the last three conversations you had before walking into the room. Not a flaw. The default. The question this chapter asks is whether you can catch yourself writing the story &mdash; before you finish it.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 8: Fall Part -->
+    <div class="card card-part fall" data-share="Part III — Fall: The 9 Patterns. What do we owe each other, now that we can see?">
+        <div class="part-number">Part III</div>
+        <h2>Fall</h2>
+        <div class="part-subtitle">The 9 Patterns</div>
+        <div class="ornament-line"></div>
+        <div class="part-epigraph"><em>What do we owe each other, now that we can see?</em></div>
+        <div class="transition">Neither self-examination nor encounter can reveal the patterns running through every group you belong to.</div>
+    </div>
+
+    <!-- 9: Fall Teaser -->
+    <div class="card card-teaser fall" data-share="The Herd Lens: Every group you belong to runs patterns you haven't chosen. What would it mean to see them clearly — not to leave, but to choose which ones you feed?">
+        <h2>The Herd Lens</h2>
+        <div class="tagline">What you can only see from outside the circle</div>
+        <div class="excerpt">
+            <p>Every group you belong to runs patterns you haven&rsquo;t chosen. Unspoken rules about what can be said. Invisible agreements about what gets rewarded. A belonging price no one posted on the door.</p>
+            <p>In 1951, Solomon Asch discovered something fascinating: people would agree with an obviously wrong answer if enough others said it first. Not because they were foolish. Because the pull of the group operates beneath individual decision. This chapter asks what it would mean to see those patterns clearly &mdash; not to leave, but to choose which ones you feed.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 10: Story — Milgram -->
+    <div class="card card-teaser fall" data-share="New Haven, 1961. A man walks into a laboratory at Yale. What happens next became one of the most important experiments in the history of psychology. Not because of what it revealed about cruelty — but about obedience.">
+        <h2>New Haven, 1961</h2>
+        <div class="tagline">From the opening of Fall</div>
+        <div class="excerpt">
+            <p>A man walks into a laboratory at Yale. He has answered a newspaper ad offering four dollars for an hour of his time. He is not a scientist. He is a teacher, a postal worker, a salesman.</p>
+            <p>What happens next became one of the most important experiments in the history of psychology. Not because of what it revealed about cruelty &mdash; but about the invisible patterns that guide ordinary people through situations they never imagined they would face.</p>
+            <p>The question it raises is not <em>would you?</em> The question is: <em>what pattern would you have to see clearly to choose differently?</em></p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 11: Winter Part -->
+    <div class="card card-part winter" data-share="Part IV — Winter: The 9 Forces. What forces shaped you before you were born?">
+        <div class="part-number">Part IV</div>
+        <h2>Winter</h2>
+        <div class="part-subtitle">The 9 Forces</div>
+        <div class="ornament-line"></div>
+        <div class="part-epigraph"><em>What forces shaped you before you were born?</em></div>
+        <div class="transition">You have seen yourself. You have seen others. You have seen your community and what it runs in the dark. One more scale &mdash; the largest.</div>
+    </div>
+
+    <!-- 11: Winter Teaser -->
+    <div class="card card-teaser winter" data-share="The System Lens: Before breakfast, you moved through a dozen systems. You designed none of them. None of them asked your permission. And most of them were running before you were born.">
+        <h2>The System Lens</h2>
+        <div class="tagline">You are always inside a system</div>
+        <div class="excerpt">
+            <p>Before breakfast, you moved through a dozen systems. You designed none of them. The alarm that woke you runs on an economy that decided your labor is worth a specific number. The news you checked was filtered by an algorithm optimized for your attention, not your clarity. The coffee you drank traveled through a supply chain you will never see, priced by forces you will never meet.</p>
+            <p>None of them asked your permission. Most of them were running before you were born.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 12: Special Chapter -->
+    <div class="card card-part special" data-share="The Living Portrait: You are holding a picture of someone. They are not in it anymore.">
+        <h2>The Living Portrait</h2>
+        <div class="part-subtitle">Why We Survive Together</div>
+        <div class="ornament-line"></div>
+        <div class="part-epigraph"><em>You are holding a picture of someone. They are not in it anymore.</em></div>
+        <div class="transition">A chapter that asks the question all four seasons have been circling: can you bring the full weight of your seeing to the person standing in front of you?</div>
+    </div>
+
+    <!-- Living Portrait — The Snapshot -->
+    <div class="card card-teaser special" data-share="There is a photograph you carry of every person you love. Not in your phone. In your nervous system. What would happen if you let it update?">
+        <h2 style="color:#8b7355;">The Snapshot</h2>
+        <div class="tagline" style="color:#8b7355;">From The Living Portrait</div>
+        <div class="excerpt">
+            <p>There is a photograph you carry of every person you love. Not in your phone. In your nervous system.</p>
+            <p>The person in front of you has been becoming while you weren&rsquo;t watching. Shaped by experiences you didn&rsquo;t share, conversations you weren&rsquo;t part of, growth you didn&rsquo;t notice because it happened in the ordinary accumulation of days. They are not who they were. And neither are you.</p>
+            <p>What would happen if you let the picture update? What would you see that the old portrait has been hiding? This chapter explores what becomes possible when you stop holding people to the version you remember &mdash; and start meeting the person who is actually there.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- Living Portrait — The Taj Mahal -->
+    <div class="card card-teaser special" data-share="In 1631, Shah Jahan built the Taj Mahal — the most beautiful snapshot ever constructed. A monument to a woman who was no longer becoming. We all build our Taj Mahals. Smaller, invisible, but just as fixed.">
+        <h2 style="color:#8b7355;">The Taj Mahal</h2>
+        <div class="tagline" style="color:#8b7355;">From The Living Portrait</div>
+        <div class="excerpt">
+            <p>In 1631, Shah Jahan began building the most beautiful snapshot ever constructed. The Taj Mahal. A monument to a woman who was no longer becoming.</p>
+            <p>The living Mumtaz was not just a beloved wife. She was a trusted political advisor. She accompanied Shah Jahan on military campaigns. She mediated disputes, managed court alliances, bore fourteen children, and wielded influence that shaped the Mughal empire. She was complex, evolving, becoming &mdash; right up to the moment she was not.</p>
+            <p>We all build our Taj Mahals. Smaller, invisible, but just as fixed. This chapter is about learning to build something else instead.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- About the Author -->
+    <div class="card card-teaser" data-share="Marcus Corvin learned to see clearly because the alternative was expensive. Then he noticed the same filters operating everywhere — and he couldn't unsee it.">
+        <h2 style="color:#8b7355;">The Author</h2>
+        <div class="tagline" style="color:#8b7355;">Marcus Corvin is a pen name. The person behind it does not think that matters much.</div>
+        <div class="excerpt">
+            <p>He has spent years in rooms where unclear seeing costs something real. Not classrooms. Not seminars. Rooms where the feedback is immediate and the window between seeing and acting does not wait for your theory to catch up. He learned to see clearly because the alternative was expensive.</p>
+            <p>Then he noticed the same filters operating everywhere &mdash; in relationships, in communities, in systems &mdash; and he couldn&rsquo;t unsee it. The framework underneath this book was born from that. Built by someone who needed tools that worked when he was tired, cornered, wrong, or in love.</p>
+            <p>The entire point &mdash; the only point &mdash; is that after reading this, you need it less. If that sounds like a strange business model, you are beginning to understand the author.</p>
+        </div>
+    </div>
+
+    <!-- 14: Download -->
+    <div class="card card-download" data-share="The Calibrated View: Master Yourself — Volume I. Free PDF. No sign-up. Just the book. https://marcus-corvin.github.io/thecalibratedview/">
+        <div class="ornament">&#x25C6;</div>
+        <div class="cta-text">36 chapters. 4 seasons. 1 framework for seeing clearly.</div>
+        <a href="the-calibrated-view-vol1.pdf" class="btn-download">Download the Book (PDF)</a>
+        <div class="fine-print">Free. No sign-up. No email list. Just the book.</div>
+    </div>
+
 </div>
 
 <!-- Navigation -->
 <div class="nav">
-    <button id="prev">&#8592;</button>
+    <button id="prev" onclick="navigate(-1)" disabled>&#8592;</button>
     <span class="counter" id="counter"></span>
-    <button id="next">&#8594;</button>
+    <button id="next" onclick="navigate(1)">&#8594;</button>
 </div>
 
-<div class="key-hint" id="keyHint">Drag a corner, swipe, or use arrow keys</div>
+<div class="key-hint" id="keyHint">Arrow keys or swipe to navigate</div>
 
 <div class="page-footer">
     &copy; 2026 Marcus Corvin &middot; <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
 <script>
-    // Share texts per page index
-    const shareTexts = [
-        "You are running on a picture that expired years ago and never got updated. The Calibrated View: Master Yourself \u2014 Volume I.",
-        "\u201CThe happiness of your life depends upon the quality of your thoughts.\u201D \u2014 Marcus Aurelius",
-        "You are holding a book about seeing. Not the mystical kind. The ordinary kind \u2014 the kind that determines whether you understand what is actually happening.",
-        "You are sitting across from someone you love. Something has shifted between you, and neither of you has named it yet.",
-        "Konya, 1244. Shams asks: \u201CWhat is the use of all this if it has not become living experience?\u201D Rumi\u2019s books fall from his hands.",
-        "Part I \u2014 Spring: The 9 Lenses. What you see was chosen for you. Until now.",
-        "The Family Lens: You did not choose your first way of seeing. It was handed to you in a specific room, by specific people.",
-        "Part II \u2014 Summer: The 9 Encounters. Lenses cleaned in solitude have not been tested against other people.",
-        "The Projection Lens: What if the version of someone you carry in your head says more about you than about them?",
-        "Part III \u2014 Fall: The 9 Patterns. What do we owe each other, now that we can see?",
-        "The Herd Lens: Every group you belong to runs patterns you haven\u2019t chosen. What would it mean to see them clearly?",
-        "New Haven, 1961. The question is not would you? The question is: what pattern would you have to see clearly to choose differently?",
-        "Part IV \u2014 Winter: The 9 Forces. What forces shaped you before you were born?",
-        "The System Lens: Before breakfast, you moved through a dozen systems. You designed none of them. Most were running before you were born.",
-        "The Living Portrait: You are holding a picture of someone. They are not in it anymore.",
-        "The Snapshot: There is a photograph you carry of every person you love. Not in your phone. In your nervous system.",
-        "In 1631, Shah Jahan built the Taj Mahal \u2014 the most beautiful snapshot ever constructed. We all build our Taj Mahals. Smaller, invisible, but just as fixed.",
-        "Marcus Corvin learned to see clearly because the alternative was expensive. Then he noticed the same filters operating everywhere \u2014 and he couldn\u2019t unsee it.",
-        "The Calibrated View: Master Yourself \u2014 Volume I. Free PDF. No sign-up. Just the book."
-    ];
-
+    const cards = document.querySelectorAll('.card');
     const counter = document.getElementById('counter');
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
-    const progressBar = document.getElementById('progressBar');
     const keyHint = document.getElementById('keyHint');
+    const progressBar = document.getElementById('progressBar');
+    let current = 0;
+    const total = cards.length;
 
-    // Initialize StPageFlip — fill most of the viewport
-    var vw = window.innerWidth;
-    var vh = window.innerHeight;
-    var pageW = Math.min(vw * 0.92, 700);
-    var pageH = Math.min(vh * 0.82, 950);
-
-    const pageFlip = new St.PageFlip(document.getElementById('book'), {
-        width: pageW,
-        height: pageH,
-        size: "stretch",
-        minWidth: 300,
-        maxWidth: 800,
-        minHeight: 450,
-        maxHeight: 1000,
-        showCover: true,
-        usePortrait: true,
-        drawShadow: true,
-        flippingTime: 800,
-        useMouseEvents: true,
-        swipeDistance: 30,
-        maxShadowOpacity: 0.35,
-        mobileScrollSupport: false
-    });
-
-    pageFlip.loadFromHTML(document.querySelectorAll('.page'));
-
-    const totalPages = pageFlip.getPageCount();
-
-    function updateUI() {
-        const current = pageFlip.getCurrentPageIndex();
-        counter.textContent = (current + 1) + ' / ' + totalPages;
-        prevBtn.disabled = current === 0;
-        nextBtn.disabled = current >= totalPages - 1;
-        progressBar.style.width = ((current / Math.max(totalPages - 1, 1)) * 100) + '%';
+    function showCard(index, direction) {
+        cards.forEach((card, i) => {
+            card.classList.remove('active', 'exit-left');
+            if (i === index) {
+                card.classList.add('active');
+            } else if (direction > 0 && i === index - 1) {
+                card.classList.add('exit-left');
+            }
+        });
+        counter.textContent = (index + 1) + ' / ' + total;
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === total - 1;
+        progressBar.style.width = ((index / (total - 1)) * 100) + '%';
     }
 
-    // Page flip event
-    pageFlip.on('flip', function(e) {
-        updateUI();
+    function navigate(direction) {
+        const next = current + direction;
+        if (next < 0 || next >= total) return;
+        current = next;
+        showCard(current, direction);
+
+        // Hide hint after first navigation
         if (keyHint.style.opacity !== '0') {
             keyHint.style.opacity = '0';
         }
-    });
-
-    // Navigation buttons
-    prevBtn.addEventListener('click', function() { pageFlip.flipPrev(); });
-    nextBtn.addEventListener('click', function() { pageFlip.flipNext(); });
+    }
 
     // Keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowRight' || e.key === ' ') {
-            e.preventDefault();
-            pageFlip.flipNext();
-        }
-        if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            pageFlip.flipPrev();
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); navigate(1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); navigate(-1); }
+    });
+
+    // Touch/swipe navigation
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            navigate(diff > 0 ? 1 : -1);
         }
     });
 
     // Share
     function shareCard() {
-        var current = pageFlip.getCurrentPageIndex();
-        var text = shareTexts[current] || 'The Calibrated View';
-        var url = 'https://marcus-corvin.github.io/thecalibratedview/';
+        const activeCard = cards[current];
+        const text = activeCard.dataset.share || 'The Calibrated View';
+        const url = 'https://marcus-corvin.github.io/thecalibratedview/';
 
         if (navigator.share) {
             navigator.share({ title: 'The Calibrated View', text: text, url: url });
         } else {
-            navigator.clipboard.writeText(text + '\n' + url).then(function() {
-                var btn = document.querySelector('.share-btn');
+            navigator.clipboard.writeText(text + '\n' + url).then(() => {
+                const btn = document.querySelector('.share-btn');
                 btn.textContent = 'Copied!';
-                setTimeout(function() { btn.textContent = 'Share this page'; }, 2000);
+                setTimeout(() => { btn.textContent = 'Share this card'; }, 2000);
             });
         }
     }
 
-    // Initialize
-    updateUI();
+    // Initialize counter and progress bar
+    showCard(0, 1);
 
-    // Fade hint
-    setTimeout(function() { if (keyHint) keyHint.style.opacity = '0'; }, 4000);
-
-    // Handle resize
-    window.addEventListener('resize', function() {
-        pageFlip.update();
-    });
+    // Fade hint after 4 seconds
+    setTimeout(() => { if (keyHint) keyHint.style.opacity = '0'; }, 4000);
 </script>
 
 </body>
