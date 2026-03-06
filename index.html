@@ -5,191 +5,624 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Calibrated View: Master Yourself — Volume I. A perceptual training program for seeing clearly.">
     <meta name="author" content="Marcus Corvin">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Calibrated View: Master Yourself">
+    <meta property="og:description" content="A perceptual training program. 36 chapters. 4 seasons. Free PDF.">
+    <meta property="og:type" content="book">
+    <meta property="og:url" content="https://marcus-corvin.github.io/thecalibratedview/">
+
     <title>The Calibrated View: Master Yourself — Volume I</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'EB Garamond', Georgia, serif;
             color: #1a1a1a;
-            background: #fefefe;
-            line-height: 1.7;
+            background: #f5f2ed;
+            overflow: hidden;
+            height: 100vh;
+            user-select: none;
         }
 
-        .hero {
-            min-height: 80vh;
+        /* --- Flipbook Container --- */
+        .flipbook {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- Cards --- */
+        .card {
+            position: absolute;
+            width: 92vw;
+            min-height: 78vh;
+            background: #fefdfb;
+            border-radius: 3px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08), 0 0 1px rgba(0,0,0,0.1);
+            padding: 2em 1.5em;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2em;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
         }
 
-        .hero h1 {
-            font-size: 2.8em;
+        .card.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+            z-index: 2;
+        }
+
+        .card.exit-left {
+            opacity: 0;
+            transform: translateX(-40px);
+        }
+
+        /* --- Card Types --- */
+
+        /* Title card */
+        .card-title {
+            text-align: center;
+            align-items: center;
+        }
+
+        .card-title h1 {
+            font-size: 1.9em;
             font-weight: 400;
             letter-spacing: 0.04em;
-            color: #1a1a1a;
-            margin-bottom: 0.15em;
+            margin-bottom: 0.1em;
         }
 
-        .hero .subtitle {
-            font-size: 1.4em;
+        .card-title .subtitle {
+            font-size: 1.3em;
             font-style: italic;
             color: #8b7355;
             margin-bottom: 0.3em;
         }
 
-        .hero .volume {
-            font-size: 0.85em;
-            letter-spacing: 0.3em;
-            color: #999;
+        .card-title .volume {
+            font-size: 0.8em;
+            letter-spacing: 0.35em;
+            color: #aaa;
             margin-bottom: 2.5em;
         }
 
-        .hero .author {
-            font-size: 1.1em;
-            letter-spacing: 0.12em;
+        .card-title .author {
+            font-size: 1em;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
+            color: #555;
+        }
+
+        /* Teaser card */
+        .card-teaser h2 {
+            font-size: 1.45em;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 0.2em;
+        }
+
+        .card-teaser .tagline {
+            font-style: italic;
+            font-size: 0.92em;
+            color: #888;
+            text-align: center;
+            margin-bottom: 1.8em;
+        }
+
+        .card-teaser .excerpt {
+            font-size: 1.05em;
+            line-height: 1.78;
+            color: #2d2d2d;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .card-teaser .excerpt p {
+            margin-bottom: 0.9em;
+        }
+
+        .card-teaser .fade-bottom {
+            height: 3em;
+            background: linear-gradient(transparent, #fefdfb);
+            margin-top: -3em;
+            position: relative;
+        }
+
+        /* Part opener card */
+        .card-part {
+            text-align: center;
+            align-items: center;
+        }
+
+        .card-part .part-number {
+            font-size: 0.8em;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 0.5em;
+        }
+
+        .card-part h2 {
+            font-size: 2.2em;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.15em;
+        }
+
+        .card-part .part-subtitle {
+            font-size: 1.15em;
+            font-style: italic;
+            margin-bottom: 1.5em;
+        }
+
+        .card-part .ornament-line {
+            width: 25%;
+            height: 1px;
+            margin-bottom: 1.5em;
+        }
+
+        .card-part .part-epigraph {
+            font-style: italic;
+            font-size: 1em;
             color: #4a4a4a;
+            max-width: 85%;
+            line-height: 1.65;
+        }
+
+        .card-part .transition {
+            font-size: 0.92em;
+            color: #666;
+            max-width: 85%;
+            margin-top: 1.5em;
+            line-height: 1.6;
+        }
+
+        /* Through-line card */
+        .card-moment {
+            text-align: center;
+            align-items: center;
+        }
+
+        .card-moment .moment-label {
+            font-variant: small-caps;
+            letter-spacing: 0.12em;
+            color: #8b7355;
+            font-size: 0.85em;
+            margin-bottom: 1.5em;
+        }
+
+        .card-moment p {
+            font-style: italic;
+            font-size: 1.08em;
+            color: #3d3d3d;
+            max-width: 90%;
+            margin: 0 auto 1em;
+            line-height: 1.75;
+        }
+
+        /* Download card */
+        .card-download {
+            text-align: center;
+            align-items: center;
+        }
+
+        .card-download .ornament {
+            font-size: 0.55em;
+            color: #8b7355;
+            letter-spacing: 0.5em;
             margin-bottom: 2em;
         }
 
-        .hook {
-            max-width: 520px;
-            font-size: 1.1em;
+        .card-download .cta-text {
             font-style: italic;
             color: #555;
-            margin-bottom: 3em;
-            line-height: 1.65;
+            font-size: 1.05em;
+            margin-bottom: 2em;
+            line-height: 1.6;
         }
 
         .btn-download {
             display: inline-block;
-            padding: 0.9em 2.5em;
+            padding: 0.85em 2.5em;
             font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.1em;
+            font-size: 1.08em;
             text-decoration: none;
             background: #1a1a1a;
-            color: #fefefe;
+            color: #fefdfb;
             border: 1px solid #1a1a1a;
             border-radius: 2px;
             transition: all 0.2s;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.04em;
+            cursor: pointer;
         }
 
-        .btn-download:hover {
-            background: #333;
-        }
+        .btn-download:hover { background: #333; }
 
-        .seasons {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 4em 2em;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5em;
-            border-top: 1px solid #e8e0d4;
-        }
-
-        .season-card {
-            padding: 1.2em;
-            border-left: 3px solid #ccc;
-        }
-
-        .season-card h3 {
-            font-size: 1.1em;
-            font-weight: 400;
-            margin-bottom: 0.3em;
-        }
-
-        .season-card p {
-            font-size: 0.9em;
-            color: #666;
-        }
-
-        .season-card.spring { border-left-color: #6b7f5e; }
-        .season-card.spring h3 { color: #6b7f5e; }
-        .season-card.summer { border-left-color: #8b6914; }
-        .season-card.summer h3 { color: #8b6914; }
-        .season-card.fall { border-left-color: #7a4419; }
-        .season-card.fall h3 { color: #7a4419; }
-        .season-card.winter { border-left-color: #4a5568; }
-        .season-card.winter h3 { color: #4a5568; }
-
-        .about {
-            max-width: 520px;
-            margin: 0 auto;
-            padding: 0 2em 4em;
-            text-align: center;
-            font-size: 0.95em;
-            color: #666;
-        }
-
-        .about p {
-            margin-bottom: 0.8em;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2em;
+        .card-download .fine-print {
+            margin-top: 1.5em;
             font-size: 0.85em;
-            color: #999;
-            border-top: 1px solid #eee;
+            color: #aaa;
         }
 
-        footer a {
+        /* Season colors */
+        .spring h2 { color: #6b7f5e; }
+        .spring .part-subtitle { color: #6b7f5e; }
+        .spring .ornament-line { background: #6b7f5e; }
+        .spring .part-number { color: #6b7f5e; }
+        .spring .tagline { color: #6b7f5e; }
+
+        .summer h2 { color: #8b6914; }
+        .summer .part-subtitle { color: #8b6914; }
+        .summer .ornament-line { background: #8b6914; }
+        .summer .part-number { color: #8b6914; }
+        .summer .tagline { color: #8b6914; }
+
+        .fall h2 { color: #7a4419; }
+        .fall .part-subtitle { color: #7a4419; }
+        .fall .ornament-line { background: #7a4419; }
+        .fall .part-number { color: #7a4419; }
+        .fall .tagline { color: #7a4419; }
+
+        .winter h2 { color: #4a5568; }
+        .winter .part-subtitle { color: #4a5568; }
+        .winter .ornament-line { background: #4a5568; }
+        .winter .part-number { color: #4a5568; }
+        .winter .tagline { color: #4a5568; }
+
+        .special h2 { color: #8b7355; }
+        .special .part-subtitle { color: #8b7355; }
+        .special .ornament-line { background: #8b7355; }
+        .special .tagline { color: #8b7355; }
+
+        /* --- Navigation --- */
+        .nav {
+            position: fixed;
+            bottom: 2em;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 1.5em;
+            z-index: 10;
+        }
+
+        .nav button {
+            background: none;
+            border: 1px solid #c4b49a;
             color: #8b7355;
-            text-decoration: none;
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 1.1em;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2em; }
-            .seasons { grid-template-columns: 1fr; }
+        .nav button:hover {
+            background: #8b7355;
+            color: #fefdfb;
+            border-color: #8b7355;
+        }
+
+        .nav button:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .nav button:disabled:hover {
+            background: none;
+            color: #8b7355;
+            border-color: #c4b49a;
+        }
+
+        .nav .counter {
+            font-size: 0.8em;
+            color: #aaa;
+            letter-spacing: 0.1em;
+            min-width: 3em;
+            text-align: center;
+        }
+
+        /* --- Share Button --- */
+        .share-btn {
+            position: fixed;
+            top: 1.5em;
+            right: 1.5em;
+            background: none;
+            border: 1px solid #d4c5a9;
+            color: #8b7355;
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 0.85em;
+            padding: 0.4em 1em;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+            letter-spacing: 0.05em;
+        }
+
+        .share-btn:hover {
+            background: #8b7355;
+            color: #fefdfb;
+            border-color: #8b7355;
+        }
+
+        /* --- Footer --- */
+        .page-footer {
+            position: fixed;
+            bottom: 0.5em;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.72em;
+            color: #bbb;
+            z-index: 5;
+        }
+
+        .page-footer a { color: #8b7355; text-decoration: none; }
+
+        /* --- Desktop scale-up --- */
+        @media (min-width: 600px) {
+            .card {
+                width: 520px;
+                min-height: 680px;
+                padding: 3em 2.5em;
+            }
+            .card-title h1 { font-size: 2.4em; }
+            .card-part h2 { font-size: 2.2em; }
+        }
+
+        /* --- Keyboard hint --- */
+        .key-hint {
+            position: fixed;
+            bottom: 5em;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75em;
+            color: #ccc;
+            z-index: 5;
+            transition: opacity 1s;
         }
     </style>
 </head>
 <body>
 
-<div class="hero">
-    <h1>The Calibrated View</h1>
-    <div class="subtitle">Master Yourself</div>
-    <div class="volume">— Volume I —</div>
-    <div class="author">Marcus Corvin</div>
-    <div class="hook">You are running on a picture that expired years ago and never got updated. This book teaches you to see the filters — on your perception, your relationships, your community, and the systems you live inside — clearly enough to navigate.</div>
-    <a href="the-calibrated-view-vol1.pdf" class="btn-download">Download the Book (PDF)</a>
+<button class="share-btn" onclick="shareCard()">Share this card</button>
+
+<div class="flipbook" id="flipbook">
+
+    <!-- 0: Title -->
+    <div class="card card-title active" data-share="The Calibrated View: Master Yourself — Volume I. A perceptual training program.">
+        <h1>The Calibrated View</h1>
+        <div class="subtitle">Master Yourself</div>
+        <div class="volume">— Volume I —</div>
+        <div class="author">Marcus Corvin</div>
+    </div>
+
+    <!-- 1: Epigraph -->
+    <div class="card card-moment" data-share="&ldquo;The happiness of your life depends upon the quality of your thoughts.&rdquo; — Marcus Aurelius">
+        <p>&ldquo;The happiness of your life depends upon<br>the quality of your thoughts.&rdquo;</p>
+        <p style="font-style:normal; font-size:0.88em; color:#8b7355;">&mdash; Marcus Aurelius, <em>Meditations</em></p>
+    </div>
+
+    <!-- 2: Hook -->
+    <div class="card card-teaser" data-share="You are holding a book about seeing. Not the mystical kind. The ordinary kind — the kind that determines whether you understand what is actually happening.">
+        <h2>Before You Begin</h2>
+        <div class="tagline" style="color:#8b7355;"></div>
+        <div class="excerpt">
+            <p>You are holding a book about seeing.</p>
+            <p>Not seeing in the mystical sense &mdash; no third eye, no enlightenment, no cosmic truth revealed in a flash. Seeing in the ordinary sense. The sense that determines whether you understand what is actually happening in your relationships, your work, your community, and your own mind &mdash; or whether you are running on a picture that expired years ago and never got updated.</p>
+            <p>None of this is abstract. It operates in your next conversation. Your next decision. Your next conflict. Your next quiet moment alone.</p>
+        </div>
+    </div>
+
+    <!-- 3: Through-line -->
+    <div class="card card-moment" data-share="You are sitting across from someone you love. Something has shifted between you, and neither of you has named it yet.">
+        <div class="moment-label">A moment we will return to</div>
+        <p>You are sitting across from someone you love. Something has shifted between you, and neither of you has named it yet.</p>
+        <p>Maybe it is a silence that used to be comfortable. Maybe it is a sentence that landed wrong three days ago and has been growing in the dark.</p>
+        <p>Hold that moment. Each season will give you different eyes for the same scene.</p>
+    </div>
+
+    <!-- 4: Spring Part -->
+    <div class="card card-part spring" data-share="Part I — Spring: The 9 Lenses. What you see was chosen for you. Until now.">
+        <div class="part-number">Part I</div>
+        <h2>Spring</h2>
+        <div class="part-subtitle">The 9 Lenses</div>
+        <div class="ornament-line"></div>
+        <div class="part-epigraph"><em>What you see was chosen for you. Until now.</em></div>
+    </div>
+
+    <!-- 5: Spring Teaser -->
+    <div class="card card-teaser spring" data-share="The Family Lens: You did not choose your first way of seeing. It was handed to you in a specific room, by specific people.">
+        <h2>The Family Lens</h2>
+        <div class="tagline">What was installed before you could refuse it</div>
+        <div class="excerpt">
+            <p>You did not choose your first way of seeing. It was handed to you in a specific room, by specific people, through the daily texture of how they loved you and how they failed to. Before you could speak, you were learning what closeness means, what conflict looks like, whether the world responds when you reach for it.</p>
+            <p>Those patterns are not memories. They are architecture.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 6: Summer Part -->
+    <div class="card card-part summer" data-share="Part II — Summer: The 9 Encounters. Lenses cleaned in solitude have not been tested against other people.">
+        <div class="part-number">Part II</div>
+        <h2>Summer</h2>
+        <div class="part-subtitle">The 9 Encounters</div>
+        <div class="ornament-line"></div>
+        <div class="part-epigraph"><em>What is the world showing you, now that you can see?</em></div>
+        <div class="transition">You now carry nine lenses. You can name them. That alone changes how you walk through the world. But lenses cleaned in solitude have not been tested against other people.</div>
+    </div>
+
+    <!-- 7: Summer Teaser -->
+    <div class="card card-teaser summer" data-share="The Projection Lens: You have never seen another person clearly. Not once. Every face you read was filtered through your own history.">
+        <h2>The Projection Lens</h2>
+        <div class="tagline">The story you write on someone else&rsquo;s face</div>
+        <div class="excerpt">
+            <p>You have never seen another person clearly. Not once. Every face you have ever read was filtered through your own history &mdash; your attachment style, your expectations, the last three conversations you had before walking into the room.</p>
+            <p>Projection is not a flaw. It is the default. The question is whether you can catch it in the act.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 8: Fall Part -->
+    <div class="card card-part fall" data-share="Part III — Fall: The 9 Patterns. What do we owe each other, now that we can see?">
+        <div class="part-number">Part III</div>
+        <h2>Fall</h2>
+        <div class="part-subtitle">The 9 Patterns</div>
+        <div class="ornament-line"></div>
+        <div class="part-epigraph"><em>What do we owe each other, now that we can see?</em></div>
+        <div class="transition">Neither self-examination nor encounter can reveal the patterns running through every group you belong to.</div>
+    </div>
+
+    <!-- 9: Fall Teaser -->
+    <div class="card card-teaser fall" data-share="The Herd Lens: 75% of people would agree with an obviously wrong answer if enough others said it first. They were not stupid. They were inside something.">
+        <h2>The Herd Lens</h2>
+        <div class="tagline">The group you cannot see from inside it</div>
+        <div class="excerpt">
+            <p>Solomon Asch showed 75% of people would agree with an obviously wrong answer if enough others said it first. They were not stupid. They were inside something.</p>
+            <p>A pattern that operates below the level of individual decision &mdash; and the more intelligent you are, the more sophisticated your justification for going along.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 10: Winter Part -->
+    <div class="card card-part winter" data-share="Part IV — Winter: The 9 Forces. What forces shaped you before you were born?">
+        <div class="part-number">Part IV</div>
+        <h2>Winter</h2>
+        <div class="part-subtitle">The 9 Forces</div>
+        <div class="ornament-line"></div>
+        <div class="part-epigraph"><em>What forces shaped you before you were born?</em></div>
+        <div class="transition">You have seen yourself. You have seen others. You have seen your community and what it runs in the dark. One more scale &mdash; the largest.</div>
+    </div>
+
+    <!-- 11: Winter Teaser -->
+    <div class="card card-teaser winter" data-share="The System Lens: A system is not a conspiracy. It is interconnected elements organized to achieve a function — which may differ from its stated purpose. You are inside several right now.">
+        <h2>The System Lens</h2>
+        <div class="tagline">You are always inside a system</div>
+        <div class="excerpt">
+            <p>A system is not a conspiracy. It is interconnected elements organized to achieve a function &mdash; which may differ from its stated purpose.</p>
+            <p>You are inside several right now. The economy that shaped your morning. The institution that shapes your workday. The information environment that shaped what you believe is happening in the world. None of them asked your permission.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 12: Special Chapter -->
+    <div class="card card-part special" data-share="The Living Portrait: You are holding a picture of someone. They are not in it anymore.">
+        <h2>The Living Portrait</h2>
+        <div class="part-subtitle">Why We Survive Together</div>
+        <div class="ornament-line"></div>
+        <div class="part-epigraph"><em>You are holding a picture of someone. They are not in it anymore.</em></div>
+        <div class="transition">A chapter that asks the question all four seasons have been circling: can you bring the full weight of your seeing to the person standing in front of you?</div>
+    </div>
+
+    <!-- 13: Download -->
+    <div class="card card-download" data-share="The Calibrated View: Master Yourself — Volume I. Free PDF. No sign-up. Just the book. https://marcus-corvin.github.io/thecalibratedview/">
+        <div class="ornament">&#x25C6;</div>
+        <div class="cta-text">36 chapters. 4 seasons. 1 framework for seeing clearly.</div>
+        <a href="the-calibrated-view-vol1.pdf" class="btn-download">Download the Book (PDF)</a>
+        <div class="fine-print">Free. No sign-up. No email list. Just the book.</div>
+    </div>
+
 </div>
 
-<div class="seasons">
-    <div class="season-card spring">
-        <h3>Spring — The 9 Lenses</h3>
-        <p>The filters installed before you had the consciousness to refuse them.</p>
-    </div>
-    <div class="season-card summer">
-        <h3>Summer — The 9 Encounters</h3>
-        <p>Seeing others without projecting your own story onto their face.</p>
-    </div>
-    <div class="season-card fall">
-        <h3>Fall — The 9 Patterns</h3>
-        <p>The silence that shapes communities more than any spoken narrative.</p>
-    </div>
-    <div class="season-card winter">
-        <h3>Winter — The 9 Forces</h3>
-        <p>The architecture that was operating before you were born.</p>
-    </div>
+<!-- Navigation -->
+<div class="nav">
+    <button id="prev" onclick="navigate(-1)" disabled>&#8592;</button>
+    <span class="counter" id="counter">1 / 14</span>
+    <button id="next" onclick="navigate(1)">&#8594;</button>
 </div>
 
-<div class="about">
-    <p>The entire point — the only point — is that after reading this, you need it less.</p>
-    <p>Free. No sign-up. No email list. Just the book.</p>
+<div class="key-hint" id="keyHint">Arrow keys or swipe to navigate</div>
+
+<div class="page-footer">
+    &copy; 2026 Marcus Corvin &middot; <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>
 </div>
 
-<footer>
-    <p>&copy; 2026 Marcus Corvin. Licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a>. Share freely. Do not modify or sell.</p>
-</footer>
+<script>
+    const cards = document.querySelectorAll('.card');
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const keyHint = document.getElementById('keyHint');
+    let current = 0;
+    const total = cards.length;
+
+    function showCard(index, direction) {
+        cards.forEach((card, i) => {
+            card.classList.remove('active', 'exit-left');
+            if (i === index) {
+                card.classList.add('active');
+            } else if (direction > 0 && i === index - 1) {
+                card.classList.add('exit-left');
+            }
+        });
+        counter.textContent = (index + 1) + ' / ' + total;
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === total - 1;
+    }
+
+    function navigate(direction) {
+        const next = current + direction;
+        if (next < 0 || next >= total) return;
+        current = next;
+        showCard(current, direction);
+
+        // Hide hint after first navigation
+        if (keyHint.style.opacity !== '0') {
+            keyHint.style.opacity = '0';
+        }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); navigate(1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); navigate(-1); }
+    });
+
+    // Touch/swipe navigation
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+    document.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+            navigate(diff > 0 ? 1 : -1);
+        }
+    });
+
+    // Share
+    function shareCard() {
+        const activeCard = cards[current];
+        const text = activeCard.dataset.share || 'The Calibrated View';
+        const url = 'https://marcus-corvin.github.io/thecalibratedview/';
+
+        if (navigator.share) {
+            navigator.share({ title: 'The Calibrated View', text: text, url: url });
+        } else {
+            navigator.clipboard.writeText(text + '\n' + url).then(() => {
+                const btn = document.querySelector('.share-btn');
+                btn.textContent = 'Copied!';
+                setTimeout(() => { btn.textContent = 'Share this card'; }, 2000);
+            });
+        }
+    }
+
+    // Fade hint after 4 seconds
+    setTimeout(() => { if (keyHint) keyHint.style.opacity = '0'; }, 4000);
+</script>
 
 </body>
 </html>
