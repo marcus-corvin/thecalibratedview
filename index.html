@@ -11,10 +11,14 @@
     <meta property="og:description" content="You are running on a picture that expired years ago and never got updated. 36 chapters. 4 seasons. A perceptual training program. Free PDF, no sign-up.">
     <meta property="og:type" content="book">
     <meta property="og:url" content="https://marcus-corvin.github.io/thecalibratedview/">
+    <meta property="og:image" content="https://marcus-corvin.github.io/thecalibratedview/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="The Calibrated View">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="The Calibrated View: Master Yourself">
     <meta name="twitter:description" content="You are running on a picture that expired years ago and never got updated. 36 chapters. 4 seasons. Free PDF.">
+    <meta name="twitter:image" content="https://marcus-corvin.github.io/thecalibratedview/og-image.png">
 
     <title>The Calibrated View: Master Yourself — Volume I</title>
     <style>
@@ -389,6 +393,17 @@
             .card-part h2 { font-size: 2.2em; }
         }
 
+        /* --- Progress Bar --- */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: #8b7355;
+            transition: width 0.4s ease;
+            z-index: 20;
+        }
+
         /* --- Keyboard hint --- */
         .key-hint {
             position: fixed;
@@ -404,6 +419,7 @@
 </head>
 <body>
 
+<div class="progress-bar" id="progressBar" style="width:0%"></div>
 <button class="share-btn" onclick="shareCard()">Share this card</button>
 
 <div class="flipbook" id="flipbook">
@@ -442,7 +458,19 @@
         <p>Hold that moment. Each season will give you different eyes for the same scene.</p>
     </div>
 
-    <!-- 4: Spring Part -->
+    <!-- 4: Story — Konya -->
+    <div class="card card-teaser" data-share="Konya, 1244. Rumi's books fell from his hands. A man who had spent his entire life constructing an identity through knowledge met someone who saw straight through the construction.">
+        <h2 style="color:#8b7355;">Konya, 1244</h2>
+        <div class="tagline" style="color:#8b7355;">From the opening of Summer</div>
+        <div class="excerpt">
+            <p>A scholar walks through the marketplace carrying an armload of books. He is Jalaluddin Rumi &mdash; renowned jurist, theologian, professor &mdash; a man whose entire identity rests on what he knows and how impressively he can display it.</p>
+            <p>Then a wandering dervish steps into his path. Shams of Tabriz &mdash; ragged, unimpressive, owning nothing. He looks at Rumi and asks a question. The effect is unanimous: Rumi&rsquo;s books fall from his hands.</p>
+            <p>A man who had spent his entire life constructing an identity through knowledge met someone who saw straight through the construction to the person underneath.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 5: Spring Part -->
     <div class="card card-part spring" data-share="Part I — Spring: The 9 Lenses. What you see was chosen for you. Until now.">
         <div class="part-number">Part I</div>
         <h2>Spring</h2>
@@ -504,7 +532,20 @@
         <div class="fade-bottom"></div>
     </div>
 
-    <!-- 10: Winter Part -->
+    <!-- 10: Story — Milgram -->
+    <div class="card card-teaser fall" data-share="New Haven, 1961. The man in the next room cries out. He begs. He screams. Then he goes silent. The researcher says: 'The experiment requires that you continue.' 65% continued to the maximum voltage.">
+        <h2>New Haven, 1961</h2>
+        <div class="tagline">From the opening of Fall</div>
+        <div class="excerpt">
+            <p>A man walks into a laboratory at Yale. He is seated in front of a machine with a row of switches. In the next room, a man is strapped to a chair with electrodes on his wrists. The volunteer must deliver an electric shock every time the other man answers incorrectly.</p>
+            <p>The man in the next room cries out. He pounds the wall. He begs. He screams. Then he goes silent.</p>
+            <p>The researcher in the white coat says, in the same flat tone every time: &ldquo;The experiment requires that you continue.&rdquo;</p>
+            <p>65% of volunteers continued to the maximum voltage.</p>
+        </div>
+        <div class="fade-bottom"></div>
+    </div>
+
+    <!-- 11: Winter Part -->
     <div class="card card-part winter" data-share="Part IV — Winter: The 9 Forces. What forces shaped you before you were born?">
         <div class="part-number">Part IV</div>
         <h2>Winter</h2>
@@ -574,6 +615,7 @@
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
     const keyHint = document.getElementById('keyHint');
+    const progressBar = document.getElementById('progressBar');
     let current = 0;
     const total = cards.length;
 
@@ -589,6 +631,7 @@
         counter.textContent = (index + 1) + ' / ' + total;
         prevBtn.disabled = index === 0;
         nextBtn.disabled = index === total - 1;
+        progressBar.style.width = ((index / (total - 1)) * 100) + '%';
     }
 
     function navigate(direction) {
