@@ -623,7 +623,7 @@
 <!-- Navigation -->
 <div class="nav">
     <button id="prev" onclick="navigate(-1)" disabled>&#8592;</button>
-    <span class="counter" id="counter">1 / 14</span>
+    <span class="counter" id="counter"></span>
     <button id="next" onclick="navigate(1)">&#8594;</button>
 </div>
 
@@ -702,6 +702,9 @@
             });
         }
     }
+
+    // Initialize counter and progress bar
+    showCard(0, 1);
 
     // Fade hint after 4 seconds
     setTimeout(() => { if (keyHint) keyHint.style.opacity = '0'; }, 4000);
