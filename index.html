@@ -613,7 +613,7 @@
     <div class="card card-download" data-share="The Calibrated View: Master Yourself — Volume I. Free PDF. No sign-up. Just the book. https://marcus-corvin.github.io/thecalibratedview/">
         <div class="ornament">&#x25C6;</div>
         <div class="cta-text">36 chapters. 4 seasons. 1 framework for seeing clearly.</div>
-        <a href="the-calibrated-view-vol1.pdf" class="btn-download">Download the Book (PDF)</a>
+        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="btn-download" id="downloadBtn">Download the Book (PDF)</a>
         <div class="fine-print">Free. No sign-up. No email list. Just the book.</div>
     </div>
 
@@ -705,9 +705,20 @@
     // Initialize counter and progress bar
     showCard(0, 1);
 
+    // Track download clicks via GoatCounter
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+        if (window.goatcounter && window.goatcounter.count) {
+            window.goatcounter.count({ path: '/download-pdf', title: 'PDF Download', event: true });
+        }
+    });
+
     // Fade hint after 4 seconds
     setTimeout(() => { if (keyHint) keyHint.style.opacity = '0'; }, 4000);
 </script>
+
+<!-- GoatCounter analytics — privacy-friendly, no cookies -->
+<script data-goatcounter="https://thecalibratedview.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
