@@ -345,6 +345,31 @@
             text-align: center;
         }
 
+        /* --- Persistent Download --- */
+        .dl-fixed {
+            position: fixed;
+            top: 1.5em;
+            left: 1.5em;
+            background: none;
+            border: 1px solid #d4c5a9;
+            color: #8b7355;
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 0.8em;
+            padding: 0.35em 0.9em;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+        }
+
+        .dl-fixed:hover {
+            background: #8b7355;
+            color: #fefdfb;
+            border-color: #8b7355;
+        }
+
         /* --- Share Button --- */
         .share-btn {
             position: fixed;
@@ -420,6 +445,7 @@
 <body>
 
 <div class="progress-bar" id="progressBar" style="width:0%"></div>
+<a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="dl-fixed" id="dlFixed" onclick="trackDownload()">Download PDF</a>
 <button class="share-btn" onclick="shareCard()">Share this card</button>
 
 <div class="flipbook" id="flipbook">
@@ -639,6 +665,7 @@
     const nextBtn = document.getElementById('next');
     const keyHint = document.getElementById('keyHint');
     const progressBar = document.getElementById('progressBar');
+    const dlFixed = document.getElementById('dlFixed');
     let current = 0;
     const total = cards.length;
 
@@ -655,6 +682,7 @@
         prevBtn.disabled = index === 0;
         nextBtn.disabled = index === total - 1;
         progressBar.style.width = ((index / (total - 1)) * 100) + '%';
+        dlFixed.style.display = index === total - 1 ? 'none' : '';
     }
 
     function navigate(direction) {
@@ -706,11 +734,12 @@
     showCard(0, 1);
 
     // Track download clicks via GoatCounter
-    document.getElementById('downloadBtn').addEventListener('click', function() {
+    function trackDownload() {
         if (window.goatcounter && window.goatcounter.count) {
             window.goatcounter.count({ path: '/download-pdf', title: 'PDF Download', event: true });
         }
-    });
+    }
+    document.getElementById('downloadBtn').addEventListener('click', trackDownload);
 
     // Fade hint after 4 seconds
     setTimeout(() => { if (keyHint) keyHint.style.opacity = '0'; }, 4000);
