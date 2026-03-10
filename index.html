@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Calibrated View: Master Yourself — Volume I. A perceptual training program for seeing clearly.">
+    <meta name="description" content="The Calibrated View — a trilogy about perception, presence, and leadership. Three volumes. Free PDFs. By Marcus Corvin.">
     <meta name="author" content="Marcus Corvin">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="The Calibrated View: Master Yourself — Volume I">
-    <meta property="og:description" content="Seeing clearly is harder than knowing more. 36 chapters. 4 seasons. A toolkit for seeing clearly. Free PDF, no sign-up.">
+    <meta property="og:title" content="The Calibrated View — See. Stay. Fill.">
+    <meta property="og:description" content="A trilogy about perception, presence, and leadership. Three volumes. Free PDFs. No sign-up.">
     <meta property="og:type" content="book">
     <meta property="og:url" content="https://marcus-corvin.github.io/thecalibratedview/">
     <meta property="og:image" content="https://marcus-corvin.github.io/thecalibratedview/og-image.png">
@@ -16,11 +16,11 @@
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="The Calibrated View">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="The Calibrated View: Master Yourself">
-    <meta name="twitter:description" content="Seeing clearly is harder than knowing more. 36 chapters. 4 seasons. Free PDF.">
+    <meta name="twitter:title" content="The Calibrated View — See. Stay. Fill.">
+    <meta name="twitter:description" content="A trilogy about perception, presence, and leadership. Three free PDFs.">
     <meta name="twitter:image" content="https://marcus-corvin.github.io/thecalibratedview/og-image.png">
 
-    <title>The Calibrated View: Master Yourself — Volume I</title>
+    <title>The Calibrated View — A Trilogy by Marcus Corvin</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
@@ -92,14 +92,7 @@
             font-size: 1.3em;
             font-style: italic;
             color: #8b7355;
-            margin-bottom: 0.3em;
-        }
-
-        .card-title .volume {
-            font-size: 0.8em;
-            letter-spacing: 0.35em;
-            color: #aaa;
-            margin-bottom: 1.2em;
+            margin-bottom: 0.5em;
         }
 
         .card-title .author {
@@ -178,69 +171,63 @@
             margin-bottom: 0.9em;
         }
 
-        /* --- Moment card --- */
-        .card-moment {
+        /* --- Volume card --- */
+        .card-volume {
             text-align: center;
             align-items: center;
         }
 
-        .card-moment .moment-label {
+        .card-volume .vol-label {
             font-variant: small-caps;
-            letter-spacing: 0.12em;
-            color: #8b7355;
-            font-size: 0.85em;
-            margin-bottom: 1.5em;
+            letter-spacing: 0.15em;
+            font-size: 0.82em;
+            margin-bottom: 0.6em;
         }
 
-        .card-moment p {
-            font-style: italic;
-            font-size: 1.08em;
-            color: #3d3d3d;
-            max-width: 90%;
-            margin: 0 auto 1em;
-            line-height: 1.75;
-        }
-
-        /* --- Book card (high-converting) --- */
-        .card-book {
-            text-align: center;
-            align-items: center;
-        }
-
-        .card-book h2 {
-            font-size: 1.5em;
+        .card-volume h2 {
+            font-size: 1.55em;
             font-weight: 400;
-            margin-bottom: 0.8em;
+            margin-bottom: 0.15em;
         }
 
-        .card-book .book-desc {
+        .card-volume .vol-subtitle {
             font-style: italic;
-            font-size: 1.02em;
-            color: #555;
-            margin-bottom: 1.8em;
-            line-height: 1.6;
+            font-size: 1.1em;
+            margin-bottom: 1.2em;
         }
 
-        .card-book .book-for {
-            text-align: left;
-            max-width: 85%;
-            font-size: 0.95em;
+        .card-volume .vol-desc {
+            font-size: 1.02em;
             color: #444;
             line-height: 1.7;
-            margin-bottom: 2em;
+            max-width: 90%;
+            margin-bottom: 1.4em;
         }
 
-        .card-book .book-for span {
+        .card-volume .seasons {
+            text-align: left;
+            max-width: 88%;
+            font-size: 0.92em;
+            color: #555;
+            line-height: 1.65;
+            margin-bottom: 1.6em;
+        }
+
+        .card-volume .seasons span {
             display: block;
-            margin-bottom: 0.4em;
+            margin-bottom: 0.3em;
             padding-left: 1em;
             text-indent: -1em;
         }
 
-        .card-book .book-for span::before {
+        .card-volume .seasons span::before {
             content: "\2022\00a0\00a0";
-            color: #8b7355;
         }
+
+        .card-volume .seasons .s-spring::before { color: #6b7f5e; }
+        .card-volume .seasons .s-summer::before { color: #8b6914; }
+        .card-volume .seasons .s-fall::before { color: #7a4419; }
+        .card-volume .seasons .s-winter::before { color: #4a5568; }
 
         /* --- Author card --- */
         .card-author h2 {
@@ -269,6 +256,39 @@
             margin-bottom: 0.9em;
         }
 
+        /* --- Arc card --- */
+        .card-arc {
+            text-align: center;
+            align-items: center;
+        }
+
+        .card-arc .arc-label {
+            font-variant: small-caps;
+            letter-spacing: 0.12em;
+            color: #8b7355;
+            font-size: 0.85em;
+            margin-bottom: 1.5em;
+        }
+
+        .card-arc h2 {
+            font-size: 1.45em;
+            font-weight: 400;
+            color: #8b7355;
+            margin-bottom: 1em;
+        }
+
+        .card-arc .arc-desc {
+            font-size: 1.05em;
+            line-height: 1.78;
+            color: #2d2d2d;
+            max-width: 90%;
+            margin-bottom: 1em;
+        }
+
+        .card-arc .arc-desc p {
+            margin-bottom: 0.8em;
+        }
+
         /* --- Download card --- */
         .card-download {
             text-align: center;
@@ -292,9 +312,9 @@
 
         .btn-download {
             display: inline-block;
-            padding: 0.85em 2.5em;
+            padding: 0.7em 2em;
             font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.08em;
+            font-size: 1.02em;
             text-decoration: none;
             background: #1a1a1a;
             color: #fefdfb;
@@ -307,10 +327,38 @@
 
         .btn-download:hover { background: #333; }
 
+        .btn-download-outline {
+            display: inline-block;
+            padding: 0.6em 1.8em;
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 0.95em;
+            text-decoration: none;
+            background: transparent;
+            color: #1a1a1a;
+            border: 1px solid #c4b49a;
+            border-radius: 2px;
+            transition: all 0.2s;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+        }
+
+        .btn-download-outline:hover {
+            background: #8b7355;
+            color: #fefdfb;
+            border-color: #8b7355;
+        }
+
         .card-download .fine-print {
             margin-top: 1.5em;
             font-size: 0.85em;
             color: #aaa;
+        }
+
+        .download-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7em;
+            align-items: center;
         }
 
         /* --- Card CTA link --- */
@@ -332,12 +380,18 @@
             border-bottom-color: #8b7355;
         }
 
-        /* --- Season accent colors --- */
-        .spring h2 { color: #6b7f5e; }
-        .summer h2 { color: #8b6914; }
-        .fall h2 { color: #7a4419; }
-        .winter h2 { color: #4a5568; }
-        .special h2 { color: #8b7355; }
+        /* --- Volume accent colors --- */
+        .vol-i .vol-label { color: #6b7f5e; }
+        .vol-i h2 { color: #6b7f5e; }
+        .vol-i .vol-subtitle { color: #6b7f5e; }
+
+        .vol-ii .vol-label { color: #8b6914; }
+        .vol-ii h2 { color: #8b6914; }
+        .vol-ii .vol-subtitle { color: #8b6914; }
+
+        .vol-iii .vol-label { color: #7a4419; }
+        .vol-iii h2 { color: #7a4419; }
+        .vol-iii .vol-subtitle { color: #7a4419; }
 
         /* --- Navigation --- */
         .nav {
@@ -463,6 +517,13 @@
             }
             .card-title h1 { font-size: 2.4em; }
             .card-hook h2 { font-size: 1.7em; }
+            .card-volume h2 { font-size: 1.7em; }
+            .download-group {
+                flex-direction: row;
+                gap: 1em;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
 
         /* --- Progress Bar --- */
@@ -492,135 +553,122 @@
 <body>
 
 <div class="progress-bar" id="progressBar" style="width:0%"></div>
-<a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="dl-fixed" id="dlFixed" onclick="trackDownload()">Download PDF</a>
+<button class="dl-fixed" id="dlFixed" onclick="navigateToCard(10)">Get the PDFs</button>
 <button class="share-btn" onclick="shareCard()">Share this card</button>
 
 <div class="flipbook" id="flipbook">
 
-    <!-- 0: Title -->
-    <div class="card card-title active" data-share="Seeing clearly is harder than knowing more. The Calibrated View: Master Yourself — Volume I. Free PDF.">
+    <!-- 0: Trilogy Title -->
+    <div class="card card-title active" data-share="The Calibrated View &mdash; a trilogy about perception, presence, and leadership. Three volumes. Free PDFs. https://marcus-corvin.github.io/thecalibratedview/">
         <h1>The Calibrated View</h1>
-        <div class="subtitle">Master Yourself</div>
-        <div class="volume">&mdash; Volume I &mdash;</div>
-        <div class="author">Marcus Corvin</div>
-        <div class="tagline">Seeing clearly is harder than knowing more.</div>
-        <div class="meta-line">A toolkit for seeing clearly &middot; 36 chapters</div>
+        <div class="subtitle">See. Stay. Fill.</div>
+        <div class="author">A trilogy by Marcus Corvin</div>
+        <div class="tagline">A trilogy about perception, presence, and leadership.</div>
+        <div class="meta-line">Three volumes &middot; Free PDFs &middot; No sign-up</div>
     </div>
 
-    <!-- 1: Philosophy Hook -->
-    <div class="card card-hook" data-share="Every mind carries hidden distortions — assumptions, narratives, inherited beliefs. What if clarity is not about seeing more, but calibrating how you see?">
-        <h2>The World Is Not What You See</h2>
+    <!-- 1: Trilogy Hook -->
+    <div class="card card-hook" data-share="You are arguing in the kitchen at 9 PM. Not about anything new. That moment &mdash; the one where you catch yourself running a script &mdash; is where this trilogy begins.">
+        <h2>It Starts With a Moment You Recognise</h2>
         <div class="insight">
-            <p>Every mind carries hidden distortions &mdash; assumptions, narratives, and inherited beliefs that were installed before you had the consciousness to refuse them.</p>
-            <p>What if clarity is not about seeing more, but calibrating <em>how</em> you see?</p>
+            <p>You are arguing in the kitchen at 9&nbsp;PM. Not about anything new. The words have worn a groove so deep that both of you could recite the other&rsquo;s lines before they speak.</p>
+            <p>Then something catches. A half-second where you hear yourself from outside. Where you notice the script.</p>
+            <p>That moment &mdash; the one where you catch yourself running a script &mdash; is where this trilogy begins.</p>
         </div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload()">Discover the framework &rarr;</a>
     </div>
 
-    <!-- 2: Through-line moment -->
-    <div class="card card-moment" data-share="You are sitting across from someone you love. Something has shifted between you, and neither of you has named it yet. What are you actually seeing?">
-        <div class="moment-label">A moment we will return to</div>
-        <p>You are sitting across from someone you love. Something has shifted between you, and neither of you has named it yet.</p>
-        <p>Are you seeing them &mdash; or the story you wrote about them?</p>
-        <p style="font-style:normal; font-size:0.88em; color:#8b7355; margin-top:0.8em;">Four seasons. Four different answers. Same moment.</p>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload()">See all four answers &rarr;</a>
+    <!-- 2: Vol I Card -->
+    <div class="card card-volume vol-i" data-share="Volume I: The First Lens &mdash; See What Is Actually There. 36 chapters across four seasons. Free PDF.">
+        <div class="vol-label">Volume I &mdash; Foundation</div>
+        <h2>The First Lens</h2>
+        <div class="vol-subtitle">See What Is Actually There</div>
+        <div class="vol-desc">Every mind carries hidden distortions &mdash; assumptions, narratives, and inherited beliefs that were installed before you had the consciousness to refuse them. This volume maps the filters on your perception, your relationships, your community, and the systems you live inside.</div>
+        <div class="seasons">
+            <span class="s-spring"><strong>Spring</strong> &mdash; The 9 Lenses</span>
+            <span class="s-summer"><strong>Summer</strong> &mdash; The 9 Encounters</span>
+            <span class="s-fall"><strong>Fall</strong> &mdash; The 9 Patterns</span>
+            <span class="s-winter"><strong>Winter</strong> &mdash; The 9 Forces</span>
+        </div>
+        <a href="the-calibrated-view-vol1.pdf" class="btn-download" onclick="trackDownload('vol1')">Download Volume I (PDF)</a>
+        <div style="margin-top:0.6em; font-size:0.82em; color:#aaa;">36 chapters &middot; 4 seasons</div>
     </div>
 
-    <!-- 3: Story — Konya -->
-    <div class="card card-story" data-share="Konya, 1244. Shams asks Rumi: &ldquo;What is the use of all this if it has not become living experience?&rdquo; Rumi's books fall from his hands.">
+    <!-- 3: Vol I Story &mdash; Konya -->
+    <div class="card card-story" data-share="Konya, 1244. Shams asks Rumi: What is the use of all this if it has not become living experience? Rumi's books fall from his hands.">
         <h2 style="color:#8b7355;">Konya, 1244</h2>
-        <div class="story-label">From the opening of Summer</div>
+        <div class="story-label">From Volume I &mdash; Summer</div>
         <div class="excerpt">
             <p>A scholar walks through the marketplace carrying an armload of books. He is Jalaluddin Rumi &mdash; renowned jurist, theologian, a man whose entire identity rests on what he knows.</p>
             <p>A wandering dervish steps into his path. Shams of Tabriz &mdash; ragged, owning nothing. He gestures at the books and asks: <em>&ldquo;What is the use of all this if it has not become living experience?&rdquo;</em></p>
             <p>Rumi&rsquo;s books fall from his hands.</p>
         </div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload()">Read what happens next &rarr;</a>
+        <a href="the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload('vol1')">Read what happens next &rarr;</a>
     </div>
 
-    <!-- 4: Spring — merged -->
-    <div class="card card-hook spring" data-share="You didn't choose how you see. Before you could speak, you were learning what closeness means and whether the world responds when you reach for it. Those patterns are not memories. They are architecture.">
-        <h2>You Didn&rsquo;t Choose How You See</h2>
+    <!-- 4: Vol II Card -->
+    <div class="card card-volume vol-ii" data-share="Volume II: The Full Room &mdash; Stay Through What Matters. 40 chapters across four seasons. Free PDF.">
+        <div class="vol-label">Volume II &mdash; Method</div>
+        <h2>The Full Room</h2>
+        <div class="vol-subtitle">Stay Through What Matters</div>
+        <div class="vol-desc">Seeing clearly is only the beginning. Staying in the room &mdash; when it gets uncomfortable, when the conversation stalls, when walking away would be easier &mdash; is where the real work starts.</div>
+        <div class="seasons">
+            <span class="s-spring"><strong>Spring</strong> &mdash; The 8 Thresholds</span>
+            <span class="s-summer"><strong>Summer</strong> &mdash; The 8 Frictions</span>
+            <span class="s-fall"><strong>Fall</strong> &mdash; The 8 Weavings</span>
+            <span class="s-winter"><strong>Winter</strong> &mdash; The 8 Weights</span>
+        </div>
+        <a href="the-calibrated-view-vol2.pdf" class="btn-download" onclick="trackDownload('vol2')">Download Volume II (PDF)</a>
+        <div style="margin-top:0.6em; font-size:0.82em; color:#aaa;">40 chapters &middot; 4 seasons</div>
+    </div>
+
+    <!-- 5: Vol II Hook -->
+    <div class="card card-hook" data-share="There is a room somewhere near you &mdash; a meeting, a group, an organisation &mdash; where something is being decided that affects your life. You are not in it.">
+        <h2 style="color:#8b6914;">The Room You Are Not In</h2>
         <div class="insight">
-            <p>Before you could speak, you were learning what closeness means, what conflict looks like, whether the world responds when you reach for it.</p>
-            <p>Those patterns are not memories. They are architecture.</p>
-            <p style="font-size:0.9em; color:#6b7f5e; font-style:italic;">Spring maps nine of these lenses &mdash; the filters installed before you had the consciousness to refuse them.</p>
+            <p>There is a room somewhere near you &mdash; a meeting, a group, an organisation &mdash; where something is being decided that affects your life.</p>
+            <p>You are not in it.</p>
+            <p>Not because you were excluded. Because showing up &mdash; really showing up, staying when it gets uncomfortable &mdash; is harder than seeing clearly.</p>
         </div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload()">Explore the 9 Lenses &rarr;</a>
     </div>
 
-    <!-- 5: Summer — merged -->
-    <div class="card card-hook summer" data-share="The version of someone you carry in your head — the one you argue with at 3am — says more about you than about them. What if you could catch yourself writing the story before you finish it?">
-        <h2>You&rsquo;re Arguing With Someone Who Isn&rsquo;t There</h2>
+    <!-- 6: Vol III Card -->
+    <div class="card card-volume vol-iii" data-share="Volume III: The Gap &mdash; Fill What Only You Can See. 32 chapters across four seasons. Free PDF.">
+        <div class="vol-label">Volume III &mdash; Mastery</div>
+        <h2>The Gap</h2>
+        <div class="vol-subtitle">Fill What Only You Can See</div>
+        <div class="vol-desc">There is a gap between what the room needs and what the room can see. Someone has to fill it. This volume is about what happens when that someone is you.</div>
+        <div class="seasons">
+            <span class="s-spring"><strong>Spring</strong> &mdash; The 7 Callings</span>
+            <span class="s-summer"><strong>Summer</strong> &mdash; The 7 Methods</span>
+            <span class="s-fall"><strong>Fall</strong> &mdash; The 7 Costs</span>
+            <span class="s-winter"><strong>Winter</strong> &mdash; The 7 Legacies</span>
+        </div>
+        <a href="the-calibrated-view-vol3.pdf" class="btn-download" onclick="trackDownload('vol3')">Download Volume III (PDF)</a>
+        <div style="margin-top:0.6em; font-size:0.82em; color:#aaa;">32 chapters &middot; 4 seasons</div>
+    </div>
+
+    <!-- 7: Vol III Hook -->
+    <div class="card card-hook" data-share="Nobody dreams of leading as a child. Leadership is not a dream. It is what happens when the dream collides with reality.">
+        <h2 style="color:#7a4419;">Nobody Dreams of Leading</h2>
         <div class="insight">
-            <p>The version of someone you carry in your head &mdash; the one you argue with at 3am, the one you brace for before a phone call &mdash; says more about you than about them.</p>
-            <p>What if you could catch yourself writing the story <em>before you finish it?</em></p>
-            <p style="font-size:0.9em; color:#8b6914; font-style:italic;">Summer turns the lenses outward &mdash; nine encounters that test your seeing against other people.</p>
+            <p>Nobody dreams of leading as a child. Children dream of flying, of exploring, of being seen. Leadership is not a dream. It is what happens when the dream collides with reality.</p>
+            <p>You saw something the room could not see. You stayed when others left. And now there is a gap &mdash; and you are the only one standing close enough to fill it.</p>
         </div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload()">See the 9 Encounters &rarr;</a>
     </div>
 
-    <!-- 6: Fall — merged -->
-    <div class="card card-hook fall" data-share="In 1951, Solomon Asch proved people would call an obviously wrong answer correct — if enough others said it first. Every group you belong to runs rules you never agreed to. What would it mean to see them?">
-        <h2>You Already Agreed to Rules You Never Read</h2>
-        <div class="insight">
-            <p>In 1951, Solomon Asch proved people would call an obviously wrong answer correct &mdash; if enough others said it first. Not because they were foolish. Because the pull of the group operates beneath individual decision.</p>
-            <p>Every group you belong to runs unspoken rules about what can be said, what gets rewarded, and what it costs to belong.</p>
-            <p style="font-size:0.9em; color:#7a4419; font-style:italic;">Fall maps the nine patterns running through every community &mdash; including yours.</p>
+    <!-- 8: The Arc -->
+    <div class="card card-arc" data-share="Foundation to Method to Mastery. See clearly. Show up. Fill the gap. If you recognise yourself as the careful observer, the person who keeps showing up, or the one the room quietly pushes forward &mdash; you are already somewhere inside this trilogy.">
+        <div class="arc-label">The Arc</div>
+        <h2>Foundation &rarr; Method &rarr; Mastery</h2>
+        <div class="arc-desc">
+            <p>See clearly. Show up. Fill the gap.</p>
+            <p>The trilogy moves in a spiral: from the lenses you did not choose, through the rooms you learn to stay in, to the gaps only you can see.</p>
+            <p>If you recognise yourself as the careful observer, the person who keeps showing up, or the one the room quietly pushes forward &mdash; you are already somewhere inside this trilogy.</p>
         </div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload()">Uncover the 9 Patterns &rarr;</a>
     </div>
 
-    <!-- 7: Winter — merged -->
-    <div class="card card-hook winter" data-share="Before breakfast, you moved through a dozen systems you designed none of. The alarm, the news, the coffee — all filtered, priced, and optimized by forces you'll never meet.">
-        <h2>The System Was Running Before You Were Born</h2>
-        <div class="insight">
-            <p>Before breakfast, you moved through a dozen systems. The alarm that woke you runs on an economy that decided your labor is worth a specific number. The news you checked was filtered by an algorithm optimized for your attention, not your clarity.</p>
-            <p>None of them asked your permission.</p>
-            <p style="font-size:0.9em; color:#4a5568; font-style:italic;">Winter examines the nine forces that were shaping your life before you were born.</p>
-        </div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload()">See the 9 Forces &rarr;</a>
-    </div>
-
-    <!-- 8: Living Portrait — merged -->
-    <div class="card card-hook special" data-share="There is a photograph you carry of every person you love. Not in your phone. In your nervous system. They are not who they were. And neither are you.">
-        <h2 style="color:#8b7355;">You&rsquo;re Holding a Photo That Expired</h2>
-        <div class="insight">
-            <p>There is a photograph you carry of every person you love. Not in your phone. In your nervous system.</p>
-            <p>The person in front of you has been becoming while you weren&rsquo;t watching. They are not who they were. And neither are you.</p>
-            <p>What would happen if you let the picture update?</p>
-        </div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload()">Read The Living Portrait &rarr;</a>
-    </div>
-
-    <!-- 9: Story — Taj Mahal -->
-    <div class="card card-story" data-share="In 1631, Shah Jahan built the Taj Mahal — the most beautiful snapshot ever constructed. A monument to a woman who was no longer becoming. We all build our Taj Mahals. Smaller, invisible, but just as fixed.">
-        <h2 style="color:#8b7355;">The Taj Mahal</h2>
-        <div class="story-label">From The Living Portrait</div>
-        <div class="excerpt">
-            <p>In 1631, Shah Jahan began building the most beautiful snapshot ever constructed. A monument to a woman who was no longer becoming.</p>
-            <p>The living Mumtaz was a trusted political advisor, a mediator of disputes, a force that shaped the Mughal empire. Complex, evolving, becoming &mdash; right up to the moment she was not.</p>
-            <p>We all build our Taj Mahals. Smaller, invisible, but just as fixed.</p>
-        </div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload()">Discover what to build instead &rarr;</a>
-    </div>
-
-    <!-- 10: High-converting book card -->
-    <div class="card card-book" data-share="Free Ebook — The Calibrated View. A philosophical exploration of perception, truth, and cognitive calibration. Download the PDF.">
-        <h2 style="color:#8b7355;">Free Ebook &mdash; Volume I</h2>
-        <div class="book-desc">A toolkit for seeing clearly &mdash; the filters on your perception, your relationships, your community, and the systems you live inside.</div>
-        <div class="book-for">
-            <span>Perception &mdash; how inherited filters shape everything you see</span>
-            <span>Relationships &mdash; why you argue with a version of someone who isn&rsquo;t there</span>
-            <span>Group dynamics &mdash; the invisible rules running every community you belong to</span>
-            <span>Systems thinking &mdash; the forces that were operating before you were born</span>
-        </div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="btn-download" id="downloadBtn" onclick="trackDownload()">Download PDF &mdash; Free</a>
-        <div style="margin-top:1em; font-size:0.82em; color:#aaa;">36 chapters &middot; 4 seasons &middot; No sign-up required</div>
-    </div>
-
-    <!-- 11: About the Author -->
-    <div class="card card-author" data-share="Marcus Corvin learned to see clearly because the alternative was expensive. Then he noticed the same filters operating everywhere — and he couldn't unsee it.">
+    <!-- 9: About the Author -->
+    <div class="card card-author" data-share="Marcus Corvin learned to see clearly because the alternative was expensive. Then he noticed the same filters operating everywhere &mdash; and he could not unsee it.">
         <h2>The Author</h2>
         <div class="author-sub">Marcus Corvin is a pen name. The person behind it does not think that matters much.</div>
         <div class="excerpt">
@@ -628,15 +676,18 @@
             <p>He learned to see clearly because the alternative was expensive. Then he noticed the same filters operating everywhere &mdash; and he couldn&rsquo;t unsee it.</p>
             <p>The entire point &mdash; the only point &mdash; is that after reading this, you need it less.</p>
         </div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="card-cta" onclick="trackDownload()">Read the book &rarr;</a>
     </div>
 
-    <!-- 12: Final Download -->
-    <div class="card card-download" data-share="The Calibrated View: Master Yourself — Volume I. Free PDF. No sign-up. Just the book. https://marcus-corvin.github.io/thecalibratedview/">
+    <!-- 10: Download All -->
+    <div class="card card-download" data-share="The Calibrated View &mdash; a trilogy by Marcus Corvin. Three volumes. Free PDFs. No sign-up. https://marcus-corvin.github.io/thecalibratedview/">
         <div class="ornament">&#x25C6;</div>
-        <div class="cta-text">Seeing clearly is harder than knowing more.<br>This book teaches you how.</div>
-        <a href="https://github.com/marcus-corvin/thecalibratedview/releases/download/v1.0/the-calibrated-view-vol1.pdf" class="btn-download" onclick="trackDownload()">Download the Book (PDF)</a>
-        <div class="fine-print">Free. No sign-up. No email list. Just the book.</div>
+        <div class="cta-text">See clearly. Show up. Fill the gap.<br>Three volumes. Start anywhere.</div>
+        <div class="download-group">
+            <a href="the-calibrated-view-vol1.pdf" class="btn-download-outline" onclick="trackDownload('vol1')">I &mdash; The First Lens</a>
+            <a href="the-calibrated-view-vol2.pdf" class="btn-download-outline" onclick="trackDownload('vol2')">II &mdash; The Full Room</a>
+            <a href="the-calibrated-view-vol3.pdf" class="btn-download-outline" onclick="trackDownload('vol3')">III &mdash; The Gap</a>
+        </div>
+        <div class="fine-print">Free. No sign-up. No email list. Just the books.</div>
     </div>
 
 </div>
@@ -678,8 +729,8 @@
         prevBtn.disabled = index === 0;
         nextBtn.disabled = index === total - 1;
         progressBar.style.width = ((index / (total - 1)) * 100) + '%';
-        // Hide persistent download on cards that already have a big download button
-        dlFixed.style.display = (index >= total - 3) ? 'none' : '';
+        // Hide persistent download on the last 2 cards (author + download)
+        dlFixed.style.display = (index >= total - 2) ? 'none' : '';
     }
 
     function navigate(direction) {
@@ -691,6 +742,13 @@
         if (keyHint.style.opacity !== '0') {
             keyHint.style.opacity = '0';
         }
+    }
+
+    function navigateToCard(index) {
+        if (index < 0 || index >= total) return;
+        const direction = index > current ? 1 : -1;
+        current = index;
+        showCard(current, direction);
     }
 
     // Keyboard navigation
@@ -730,9 +788,9 @@
     showCard(0, 1);
 
     // Track download clicks via GoatCounter
-    function trackDownload() {
+    function trackDownload(volume) {
         if (window.goatcounter && window.goatcounter.count) {
-            window.goatcounter.count({ path: '/download-pdf', title: 'PDF Download', event: true });
+            window.goatcounter.count({ path: '/download-' + volume, title: 'PDF Download ' + volume, event: true });
         }
     }
 
@@ -740,7 +798,7 @@
     setTimeout(() => { if (keyHint) keyHint.style.opacity = '0'; }, 4000);
 </script>
 
-<!-- GoatCounter analytics — privacy-friendly, no cookies -->
+<!-- GoatCounter analytics &mdash; privacy-friendly, no cookies -->
 <script data-goatcounter="https://marcusc.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
