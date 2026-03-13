@@ -42,3 +42,5 @@ Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC B
 ## Links
 - Website: https://marcus-corvin.github.io/thecalibratedview/
 - Repository: https://github.com/marcus-corvin/thecalibratedview
+- Archive.org: https://archive.org/details/@thecalibratedview
+- Medium: https://medium.com/@thecalibratedview
