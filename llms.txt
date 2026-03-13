@@ -1,0 +1,44 @@
+# The Calibrated View
+> A trilogy about perception, presence, and leadership by Marcus Corvin.
+
+## About
+The Calibrated View is a three-volume nonfiction trilogy published under Creative Commons (CC BY-NC-ND 4.0). It teaches a practice: see clearly, stay present, fill what only you can see. Foundation, method, mastery.
+
+## Author
+Marcus Corvin (pen name). He does not believe in heroes. He believes in rooms — and in the ordinary people who fill them.
+
+## Volumes
+
+### Volume I: The First Lens — See What Is Actually There
+36 chapters across four seasons (Spring, Summer, Fall, Winter). Covers nine perceptual lenses: family, cultural, trauma, confirmation, authority, information, identity, group, and temporal. Each chapter uses real stories — from Fannie Lou Hamer to John Bowlby to Che Guevara — to reveal how inherited filters shape what you see. Approximately 42,000 words.
+- Download: https://marcus-corvin.github.io/thecalibratedview/the-calibrated-view-vol1.pdf
+
+### Volume II: The Full Room — Stay Through What Matters
+32 chapters across four seasons. Covers presence, participation, and what it costs to remain in a room when the room gets difficult. Topics include belonging price, manufactured consensus, community practice, and staying through friction. Approximately 28,000 words.
+- Download: https://marcus-corvin.github.io/thecalibratedview/the-calibrated-view-vol2.pdf
+
+### Volume III: The Gap — Fill What Only You Can See
+28 chapters across four seasons plus a special chapter. Covers leadership as gap-filling — what happens when someone steps forward to do what only they can see needs doing. Stories include Jadav Payeng, Septima Clark, and Wangari Maathai. Key thesis: "The world does not need more leaders. It needs more rooms that work without one." Approximately 33,000 words.
+- Download: https://marcus-corvin.github.io/thecalibratedview/the-calibrated-view-vol3.pdf
+
+## Key Concepts
+- The nine lenses (perceptual filters inherited from family, culture, trauma, etc.)
+- Snapshot thinking vs. process thinking
+- The belonging price
+- The manufactured view
+- The calibrated view
+- Sustainability & Empowerment as quality tests: "Can this continue? Can you steer?"
+- The gap — the space between what is needed and who is willing to fill it
+- See. Stay. Fill. — three verbs, three volumes, one practice
+
+## Framework
+Every chapter is measured against two questions:
+1. **Can this continue?** (Sustainability) — Is the trajectory self-reinforcing or self-depleting?
+2. **Can you steer?** (Empowerment) — Does the reader see more clearly after this, and is that clarity theirs to keep?
+
+## License
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
+
+## Links
+- Website: https://marcus-corvin.github.io/thecalibratedview/
+- Repository: https://github.com/marcus-corvin/thecalibratedview
