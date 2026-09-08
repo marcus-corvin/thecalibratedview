@@ -113,19 +113,32 @@ a{color:var(--brown-deep)}
 /* ---------- skip link + header ---------- */
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:16px;top:16px;position:fixed;background:var(--ink);color:#fff;padding:10px 16px;z-index:99;border-radius:3px}
+/* On a phone the sticky bar IS the navigation. The wordmark is dropped
+   below 700px because the <h1> says it one line further down, and a
+   sticky strip that only repeats the title is dead weight on all eight
+   screens of scroll. Pills scroll horizontally if a label is ever added. */
 .topbar{position:sticky;top:0;z-index:20;background:rgba(245,240,235,.94);
   backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;min-height:54px}
-.mark{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-deep);
-  text-decoration:none;display:flex;align-items:center;min-height:44px}
-.topnav{display:none}
-.topnav a{color:var(--ink-mute);text-decoration:none;padding:8px 0}
-.topnav a:hover,.topnav a:focus{color:var(--ink);text-decoration:underline}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;
+  gap:12px;min-height:52px;padding-right:12px}
+.mark{display:none}
+.topnav{display:flex;gap:6px;font-size:15px;width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.topnav::-webkit-scrollbar{display:none}
+.topnav a{color:var(--ink-mute);text-decoration:none;white-space:nowrap;
+  display:flex;align-items:center;min-height:44px;padding:0 10px;border-radius:3px}
+.topnav a:hover,.topnav a:focus{color:var(--ink);background:rgba(139,115,85,.10)}
+.topnav a[aria-current="true"]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--brown)}
 @media(min-width:700px){
-  .topbar .wrap{min-height:58px}
-  .mark{font-size:16px;letter-spacing:.14em}
-  .topnav{display:flex;gap:22px;font-size:16px}
+  .topbar .wrap{min-height:58px;padding-right:var(--pad)}
+  .mark{display:flex;align-items:center;min-height:44px;font-size:16px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--brown-deep);text-decoration:none;white-space:nowrap}
+  .topnav{width:auto;gap:16px;font-size:16px;overflow:visible;justify-content:flex-end}
 }
+/* back to top */
+.totop{display:inline-block;margin-top:18px;font-size:16px;color:var(--brown-deep);text-decoration:none;
+  min-height:44px;display:inline-flex;align-items:center}
+.totop:hover,.totop:focus{text-decoration:underline}
 
 /* ---------- hero ---------- */
 .hero{padding:44px 0 40px;text-align:center}
@@ -165,13 +178,18 @@ a{color:var(--brown-deep)}
 
 /* ---------- sections ---------- */
 section{padding:44px 0;border-top:1px solid var(--rule)}
+/* the sticky bar would otherwise cover the heading you jumped to */
+section[id],#top{scroll-margin-top:62px}
 h2{font-size:clamp(26px,6.5vw,38px);font-weight:500;margin:0 0 8px;letter-spacing:-.01em;line-height:1.2}
 .eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 10px}
 .sub{font-style:italic;color:var(--brown-deep);font-size:19px;margin:0 0 18px}
 @media(min-width:700px){ section{padding:66px 0} .eyebrow{font-size:14px;letter-spacing:.2em} .sub{font-size:21px;margin-bottom:22px} }
 
 .vol{display:grid;grid-template-columns:1fr;gap:22px;align-items:start}
-.vol .coverwrap{max-width:150px}
+/* The hero rail already shows all three covers one screen up, so the
+   per-volume repeat only pushes the volume's name down ~210px on a
+   phone. It returns at 760px where it sits beside the text. */
+.vol .coverwrap{display:none}
 .vol p{margin:0 0 18px;color:var(--ink-soft)}
 .seasons{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:1fr;gap:8px}
 .seasons li{font-size:17px;color:var(--ink-soft)}
@@ -181,7 +199,7 @@ h2{font-size:clamp(26px,6.5vw,38px);font-weight:500;margin:0 0 8px;letter-spacin
 @media(min-width:520px){ .seasons{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 26px} }
 @media(min-width:760px){
   .vol{grid-template-columns:200px 1fr;gap:40px}
-  .vol .coverwrap{max-width:none}
+  .vol .coverwrap{display:block;max-width:none}
   .seasons li{font-size:18px}
   .meta{font-size:16px}
 }
@@ -230,9 +248,9 @@ footer a{color:var(--brown-deep)}
 <div class="topbar"><div class="wrap">
   <a class="mark" href="#top">The Calibrated View</a>
   <nav class="topnav" aria-label="Sections">
-    <a href="#volumes">The Volumes</a>
+    <a href="#volumes">Volumes</a>
     <a href="#scene">A Scene</a>
-    <a href="#author">The Author</a>
+    <a href="#author">Author</a>
     <a href="#faq">FAQ</a>
   </nav>
 </div></div>
@@ -435,10 +453,33 @@ footer a{color:var(--brown-deep)}
 
 <footer><div class="wrap">
   <p>© 2026 Marcus Corvin · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND 4.0</a> · <a href="llms.txt">llms.txt</a></p>
+  <p><a class="totop" href="#top">↑ Back to top</a></p>
   <p class="cite">Corvin, Marcus. <em>The Calibrated View</em>. 3 vols. 2026. CC BY-NC-ND 4.0. https://marcus-corvin.github.io/thecalibratedview/</p>
 </div></footer>
 
 <script>
+/* Highlight the section you are reading. Pure enhancement: without JS the
+   nav still works, it just does not track position. */
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.topnav a'));
+  var map = {};
+  links.forEach(function(a){
+    var el = document.querySelector(a.getAttribute('href'));
+    if(el) map[el.id] = a;
+  });
+  if(!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var a = map[e.target.id];
+      if(!a) return;
+      if(e.isIntersecting){
+        links.forEach(function(l){ l.removeAttribute('aria-current'); });
+        a.setAttribute('aria-current','true');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
+})();
 if(window.location.protocol!=="file:"){
   var s=document.createElement("script");
   s.async=true; s.src="//gc.zgo.at/count.js";
