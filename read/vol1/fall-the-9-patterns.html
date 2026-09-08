@@ -43,7 +43,7 @@ img,svg{max-width:100%;height:auto}
 .skip:focus{left:16px;top:16px;position:fixed;background:var(--ink);color:#fff;padding:10px 16px;z-index:99}
 .topbar{position:sticky;top:0;z-index:20;background:rgba(245,240,235,.94);
  backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:52px;max-width:820px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:52px;max-width:680px}
 .topbar a{text-decoration:none;color:var(--ink-mute);display:flex;align-items:center;min-height:44px;font-size:16px}
 .topbar a:hover,.topbar a:focus{color:var(--ink)}
 .topbar .vol{color:var(--brown-deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -80,6 +80,22 @@ li{margin-bottom:8px}
 .btn{display:inline-block;background:var(--ink);color:#fdfcfa;text-decoration:none;padding:13px 24px;
  border-radius:2px;font-size:17px;min-height:44px}
 .btn:hover,.btn:focus{background:#000}
+/* In-page contents. A season runs to 9,500 words, roughly sixty phone
+   screens, and without this the reader has no way into the middle of it
+   and no idea where they are. Only rendered when a page has 3+ chapters. */
+.inpage{background:var(--card);border:1px solid var(--rule);border-radius:3px;
+ padding:18px 20px;margin:0 0 34px}
+.inpage h2{font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+ color:var(--ink-mute);margin:0 0 12px;font-weight:400}
+.inpage ol{list-style:none;padding:0;margin:0;counter-reset:ip}
+.inpage li{counter-increment:ip;border-top:1px solid var(--rule)}
+.inpage li:first-child{border-top:0}
+.inpage a{display:flex;gap:12px;align-items:baseline;padding:9px 2px;
+ text-decoration:none;color:var(--ink);min-height:44px;font-size:18px}
+.inpage a::before{content:counter(ip,decimal-leading-zero);font-size:13px;
+ color:var(--ink-mute);min-width:22px;letter-spacing:.08em}
+.inpage a:hover,.inpage a:focus{color:var(--brown-deep)}
+@media(min-width:700px){.inpage{padding:22px 26px}}
 .toc{list-style:none;padding:0;margin:0}
 .toc li{border-bottom:1px solid var(--rule)}
 .toc a{display:flex;gap:14px;align-items:baseline;padding:15px 2px;text-decoration:none;color:var(--ink);min-height:44px}
@@ -102,7 +118,7 @@ footer a{color:var(--brown-deep)}
 <main id="main"><div class="wrap">
   <p class="eyebrow">Volume I · Foundation</p>
   <h1 class="title">Fall: The 9 Patterns</h1>
-  <p class="closing-question"><em>What do we owe each other, now that we can see?</em></p>
+  <nav class="inpage" aria-label="In this part"><h2>In this part</h2><ol><li><a href="#the-patterns-we-share">The Patterns We Share</a></li><li><a href="#the-herd-lens">The Herd Lens</a></li><li><a href="#the-belonging-price">The Belonging Price</a></li><li><a href="#what-your-community-rewards">What Your Community Rewards</a></li><li><a href="#the-silence-that-shapes">The Silence That Shapes</a></li><li><a href="#the-patterns-you-feed">The Patterns You Feed</a></li><li><a href="#what-we-owe">What We Owe</a></li><li><a href="#the-dignity-question">The Dignity Question</a></li><li><a href="#the-debt-of-seeing">The Debt of Seeing</a></li><li><a href="#how-communities-heal">How Communities Heal</a></li><li><a href="#the-collective-mirror">The Collective Mirror</a></li></ol></nav><p class="closing-question"><em>What do we owe each other, now that we can see?</em></p>
 <hr />
 <div class="nbsp-spacer"></div>
 <p><span class="story-opener">New Haven, Connecticut, 1961.</span> A man walks into a laboratory at Yale University, and he is not a scientist but a volunteer, a teacher or a postal worker or a salesman, someone who answered a newspaper ad offering four dollars for an hour of his time.</p>

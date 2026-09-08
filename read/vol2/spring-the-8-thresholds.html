@@ -43,7 +43,7 @@ img,svg{max-width:100%;height:auto}
 .skip:focus{left:16px;top:16px;position:fixed;background:var(--ink);color:#fff;padding:10px 16px;z-index:99}
 .topbar{position:sticky;top:0;z-index:20;background:rgba(245,240,235,.94);
  backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:52px;max-width:820px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:52px;max-width:680px}
 .topbar a{text-decoration:none;color:var(--ink-mute);display:flex;align-items:center;min-height:44px;font-size:16px}
 .topbar a:hover,.topbar a:focus{color:var(--ink)}
 .topbar .vol{color:var(--brown-deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -80,6 +80,22 @@ li{margin-bottom:8px}
 .btn{display:inline-block;background:var(--ink);color:#fdfcfa;text-decoration:none;padding:13px 24px;
  border-radius:2px;font-size:17px;min-height:44px}
 .btn:hover,.btn:focus{background:#000}
+/* In-page contents. A season runs to 9,500 words, roughly sixty phone
+   screens, and without this the reader has no way into the middle of it
+   and no idea where they are. Only rendered when a page has 3+ chapters. */
+.inpage{background:var(--card);border:1px solid var(--rule);border-radius:3px;
+ padding:18px 20px;margin:0 0 34px}
+.inpage h2{font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+ color:var(--ink-mute);margin:0 0 12px;font-weight:400}
+.inpage ol{list-style:none;padding:0;margin:0;counter-reset:ip}
+.inpage li{counter-increment:ip;border-top:1px solid var(--rule)}
+.inpage li:first-child{border-top:0}
+.inpage a{display:flex;gap:12px;align-items:baseline;padding:9px 2px;
+ text-decoration:none;color:var(--ink);min-height:44px;font-size:18px}
+.inpage a::before{content:counter(ip,decimal-leading-zero);font-size:13px;
+ color:var(--ink-mute);min-width:22px;letter-spacing:.08em}
+.inpage a:hover,.inpage a:focus{color:var(--brown-deep)}
+@media(min-width:700px){.inpage{padding:22px 26px}}
 .toc{list-style:none;padding:0;margin:0}
 .toc li{border-bottom:1px solid var(--rule)}
 .toc a{display:flex;gap:14px;align-items:baseline;padding:15px 2px;text-decoration:none;color:var(--ink);min-height:44px}
@@ -104,6 +120,8 @@ footer a{color:var(--brown-deep)}
   <h1 class="title">Spring: The 8 Thresholds</h1>
   <p><em>Volume 1 gave you eyes. This season asks what they&rsquo;re for.</em></p>
 <hr />
+
+<nav class="inpage" aria-label="In this part"><h2>In this part</h2><ol><li><a href="#the-cost-of-watching">The Cost of Watching</a></li><li><a href="#the-spectators-comfort">The Spectator’s Comfort</a></li><li><a href="#the-first-room">The First Room</a></li><li><a href="#the-twice-daily-threshold">The Twice-Daily Threshold</a></li><li><a href="#the-cost-of-entry">The Cost of Entry</a></li><li><a href="#what-crossing-builds">What Crossing Builds</a></li><li><a href="#the-agenda-you-bring">The Agenda You Bring</a></li><li><a href="#the-identity-shift">The Identity Shift</a></li><li><a href="#the-room-that-changes-you">The Room That Changes You</a></li><li><a href="#the-threshold-that-keeps-opening">The Threshold That Keeps Opening</a></li></ol></nav>
 <div class="nbsp-spacer"></div>
 <p>Gujarat, India, 1946. A woman named Kamla walks a dirt path before dawn, carrying a single pail of buffalo milk. She has done this walk a thousand times, always to the same middleman at the crossroads, the one who sets the price and never explains it. She has no leverage, no information, no voice in what her labor is worth.</p>
 <p>Today she walks to a different place, a concrete platform with a weighing scale and a man with a ledger, and the name on the ledger is the Kaira District Cooperative. Her milk will be tested for fat content and she will be paid on the result, and if she disagrees with the reading she can say so. At the end of the year, she votes.</p>
