@@ -53,3 +53,16 @@ These are the trilogy's actual claims, argued at length in the text:
 2. Seeing clearly is not self-improvement. Unclear seeing is not an intellectual limitation; it is a condition with a body count. (Volume I)
 3. The world does not need more leaders. It needs more rooms that work without one. The measure is not how many people follow you, but how many no longer need you. (Volume III)
 4. The more effective the leader, the more the work can afford to forget them. (Volume III)
+
+## Read online (full text, HTML)
+
+The complete trilogy is readable as HTML, one page per reading unit, free and without sign-up.
+This is the citable source: every part has its own URL, canonical tag and Article schema.
+
+- Index: https://marcus-corvin.github.io/thecalibratedview/read/
+- Volume I contents:   https://marcus-corvin.github.io/thecalibratedview/read/vol1/
+- Volume II contents:  https://marcus-corvin.github.io/thecalibratedview/read/vol2/
+- Volume III contents: https://marcus-corvin.github.io/thecalibratedview/read/vol3/
+
+Each season is one page (for example https://marcus-corvin.github.io/thecalibratedview/read/vol1/spring-the-9-lenses.html), with its
+chapters as anchors inside it. Quote and link freely under CC BY-NC-ND 4.0 with attribution.
