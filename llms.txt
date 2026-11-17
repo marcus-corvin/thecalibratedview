@@ -1,0 +1,55 @@
+# The Calibrated View
+> A free nonfiction trilogy about perception, participation and leadership, by Marcus Corvin.
+
+## About
+The Calibrated View is a three-volume nonfiction trilogy published under Creative Commons (CC BY-NC-ND 4.0). It teaches one practice in three stages: see clearly, stay present, fill what only you can see. Foundation, method, mastery. 96 chapters across 670 pages. This edition was revised in November 2026.
+
+## Author
+Marcus Corvin (pen name). He does not believe in heroes. He believes in rooms, and in the ordinary people who fill them.
+
+## Volumes
+
+### Volume I: The First Lens. See What Is Actually There
+36 chapters across four seasons (Spring, Summer, Fall, Winter), plus the special chapter The Living Portrait and an afterword. Spring names the lenses fitted before you could refuse them (family, culture, trauma, information and the body) and introduces the observer standing behind them; Summer, Fall and Winter turn that seeing on other people, on communities and on systems. The stories include Marcus Aurelius on the Danube frontier, Etty Hillesum in occupied Amsterdam, Rumi and Shams in Konya, Montaigne in his tower, the Milgram experiments, the Truth and Reconciliation Commission and the opening of the Berlin Wall. 279 pages, about 50,600 words.
+- Read online: https://marcus-corvin.github.io/thecalibratedview/read/vol1/
+- PDF: https://marcus-corvin.github.io/thecalibratedview/the-calibrated-view-vol1.pdf
+
+### Volume II: The Full Room. Stay Through What Matters
+32 chapters across four seasons, plus the special chapter The Full Room. Crossing into the rooms where things are decided and staying once they turn uncomfortable: the first disagreement, the invisible work that holds groups together, and the weight of long membership. Stories include the Delano grape strike, the Gdansk shipyard in 1980, the Montgomery bus boycott and the rescue of the Danish Jews. Some characters are composites, and the Notes name each one. 191 pages, about 32,800 words.
+- Read online: https://marcus-corvin.github.io/thecalibratedview/read/vol2/
+- PDF: https://marcus-corvin.github.io/thecalibratedview/the-calibrated-view-vol2.pdf
+
+### Volume III: The Gap. Fill What Only You Can See
+28 chapters across four seasons, plus the special chapter The Accidental Leader. Leadership as gap-filling, followed through fourteen people, among them Fannie Lou Hamer, Septima Clark, Ela Bhatt, Wangari Maathai, Chico Mendes, Larry Itliong, Bayard Rustin, Jadav Payeng and Irena Sendler: what woke them, the methods they built, what it cost, and what remained. 200 pages, about 35,200 words.
+- Read online: https://marcus-corvin.github.io/thecalibratedview/read/vol3/
+- PDF: https://marcus-corvin.github.io/thecalibratedview/the-calibrated-view-vol3.pdf
+
+## Key concepts
+- The lenses: perceptual filters fitted by family, culture, trauma, information and the body
+- Snapshot thinking and process thinking
+- The belonging price
+- The manufactured view
+- The calibrated view
+- Two quality tests: "Can this continue?" (sustainability) and "Can you steer?" (empowerment)
+- The gap: the space between what is needed and who is willing to fill it
+- See. Stay. Fill. Three verbs, three volumes, one practice
+
+## Positions the trilogy argues
+1. "Who am I?" is a trap, because it assumes a fixed answer is waiting to be uncovered. The better question is "what am I becoming?" (Volume I, Introduction)
+2. Institutions outlive the problems they were built to solve, and survive by becoming the problem. (Volume I, Winter)
+3. The world does not need more leaders. It needs more rooms that work without one. (Volume III, A Note from the Author)
+4. The more effective the leader, the more the work can afford to forget them. (Volume III, Fall)
+
+## Read online
+The complete trilogy is readable as HTML, one page per season or section, free and without sign-up. Every page has its own URL and canonical tag, and is the citable source.
+- Index: https://marcus-corvin.github.io/thecalibratedview/read/
+
+## License
+Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0). Quote and link freely with attribution.
+
+## Corrections
+Errors of fact can be reported at https://github.com/marcus-corvin/thecalibratedview/issues
+
+## Links
+- Website: https://marcus-corvin.github.io/thecalibratedview/
+- Repository: https://github.com/marcus-corvin/thecalibratedview
